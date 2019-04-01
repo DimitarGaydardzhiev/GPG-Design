@@ -11,7 +11,7 @@
 <!-- Page Wrap -->
 <div class="page" id="top">
 
-  
+
     <!-- Head Section -->
     <section class="page-section bg-dark-alfa-70 parallax-3" data-background="images/full-width-images/section-bg-25.jpg">
         <div class="relative container align-left">
@@ -94,20 +94,18 @@
                 </div>
 
             </div>
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("SendEmail", "Contact", FormMethod.Post))
             {
-                @Html.AntiForgeryToken()
-
                 <!-- Contact Form -->
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <form class="form contact-form" id="contact_form" method="post" action="SendEmail">
+                        <div class="form contact-form" id="contact_form">
                             <div class="clearfix">
 
                                 <div class="cf-left-col">
                                     <!-- Name -->
                                     <div class="form-group">
-                                        @Html.TextBoxFor(m => m.FromName, new { @class = "input-md round form-control", placeholder = "Name", pattern = ".{3,100}" })
+                                        @Html.TextBoxFor(m => m.FromName, new { @class = "input-md round form-control", @data_ng_required = "Name Required", placeholder = "Name", pattern = ".{3,100}" })
                                         @Html.ValidationMessageFor(m => m.FromName)
                                     </div>
 
@@ -154,6 +152,9 @@
                                     <div class="align-right pt-10">
                                         <button class="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn" value="Send">Submit Message</button>
                                         <input type="submit" class="btn btn-default" value="Send" />
+
+                                        <input type="submit" id="submitButton" name="submitButton" class="button medium reverse" value="РЕЗЕРВИРАЙ" onClick="return disableMe()">
+
                                     </div>
 
                                 </div>
@@ -163,20 +164,20 @@
 
 
                             <div id="result"></div>
-                        </form>
+                        </div>
 
                     </div>
                 </div>
                 <!-- End Contact Form -->
             }
-            </div>
+        </div>
     </section>
     <!-- End Contact Section -->
     <!-- Google Map -->
     <div class="google-map">
 
         <iframe src="https://maps.google.com/maps?q=%D0%92%D0%B0%D1%80%D0%BD%D0%B0%20%D0%9E%D0%BA%D0%BE%D0%BB%D1%87%D0%B8%D1%86%D0%B0%2017&t=&z=15&ie=UTF8&iwloc=&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        
+
 
 
     </div>
@@ -192,7 +193,7 @@
             <!-- End Footer Logo -->
             <!-- Social Links -->
             <div class="footer-social-links mb-110 mb-xs-60">
-                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>                                                               
+                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
             </div>
             <!-- End Social Links -->
             <!-- Footer Text -->

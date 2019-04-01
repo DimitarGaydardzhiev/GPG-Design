@@ -8,45 +8,53 @@ namespace GPGDesign.Controllers
 {
     public class ContactController : Controller
     {
-        public IActionResult Contact()
+        public ActionResult Index()
         {
-            return View();
+            return View(new EmailFormModel());
         }
 
-        [HttpPost]        
-        public ActionResult SentEmail(EmailFormModel model)
+        [HttpPost]
+        public void SendEmail(EmailFormModel model)
         {
+
             if (ModelState.IsValid)
             {
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                var message = new MailMessage();
-                message.To.Add(new MailAddress("teofil.y@gmail.com"));  // replace with valid value 
-                message.From = new MailAddress(model.FromEmail);
-                message.Subject = "Your email subject";
-                message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
-                message.IsBodyHtml = true;
-
-                using (var smtp = new SmtpClient())
+                const string fromPassword = "Welkom2018!doepicshit";
+                var fromAddress = new MailAddress("teofil.y@gmail.com", "From Name");
+                var toAddress = new MailAddress("teofil.y@gmail.com, dimiter.gg@gmail.com", "To Name");
+                var credential = new NetworkCredential
                 {
-                    var credential = new NetworkCredential
-                    {
-                        UserName = "user@outlook.com",  // replace with valid value
-                        Password = "password"  // replace with valid value
-                    };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    smtp.SendMailAsync(message);
-                    return RedirectToAction("SentEmail");
+                    UserName = "teofil.y@gmail.com",
+                    Password = fromPassword
+                };
+
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                //var message = new MailMessage();
+                //message.To.Add(new MailAddress("teofil.y@gmail.com"));
+                //message.From = new MailAddress(model.FromEmail);
+
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = credential,
+                    Timeout = 20000
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = "Contact Email",
+                    Body = string.Format(body, model.FromName, model.FromEmail, model.Message),
+                    IsBodyHtml = true
+                })
+                {
+                    smtp.Send(message);
+                    Response.Redirect("/Home");
+                    
                 }
             }
-            return View(model);
-        }
-
-        public ActionResult SentEmail()
-        {
-            return View();
         }
     }
 }
