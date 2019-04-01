@@ -19,20 +19,16 @@ namespace GPGDesign.Controllers
 
             if (ModelState.IsValid)
             {
-                const string fromPassword = "Welkom2018!doepicshit";
-                var fromAddress = new MailAddress("teofil.y@gmail.com", "From Name");
-                var toAddress = new MailAddress("teofil.y@gmail.com, dimiter.gg@gmail.com", "To Name");
+                const string fromPassword = "Gpg2018!";
+                var fromAddress = new MailAddress("officegpgdesign@gmail.com", "From Name");
+                var toAddress = new MailAddress("teofil.y@gmail.com", "To Name");
                 var credential = new NetworkCredential
                 {
-                    UserName = "teofil.y@gmail.com",
+                    UserName = "officegpgdesign@gmail.com",
                     Password = fromPassword
                 };
-
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                //var message = new MailMessage();
-                //message.To.Add(new MailAddress("teofil.y@gmail.com"));
-                //message.From = new MailAddress(model.FromEmail);
-
+                
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";                
 
                 var smtp = new SmtpClient
                 {
