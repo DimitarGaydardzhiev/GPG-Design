@@ -20,5 +20,7 @@ namespace DataLayer
         void DeleteRange(IEnumerable<T> entities);
 
         int Save(T entity);
+
+        void SaveChanges();
     }
 }

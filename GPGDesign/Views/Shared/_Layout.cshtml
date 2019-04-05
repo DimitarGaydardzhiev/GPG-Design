@@ -30,38 +30,43 @@
             <!-- Main Menu -->
             <div class="inner-nav desktop-nav">
                 <ul class="clearlist">
-
                     <!-- Item With Sub -->
+                    @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
+                    {
+                        <li>
+                            <a class="mn-has-sub">Hello, @Context.User.Identity.Name</a>
+                        </li>
+                    }
                     <li>
-                        <a href="#" class="mn-has-sub active"><i class="fa"></i>@Html.ActionLink("Home", "Index", "Home")</a>                        
-                    </li>                  
-                    <li>
-                        <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Contact Us", "Index", "Contact")</a>                        
+                        <a href="/" class="mn-has-sub active"><i class="fa"></i>@Html.ActionLink("Home", "Index", "Home")</a>
                     </li>
-                    <!-- End Item With Sub -->                                    
-                    <!-- Divider -->
-                    <li><a>&nbsp;</a></li>
-                    <!-- End Divider -->                    
-                    <!-- Languages -->
+                    <li>
+                        <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Contact Us", "Index", "Contact")</a>
+                    </li>
+                    <li>
+                        @await Component.InvokeAsync("CategoryList")
+                    </li>
+                    @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
+                    {
+                        <li>
+                            <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Registration", "Register", "Account")</a>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Logout", "Logout", new { controller = "Account" }, new { @class = "mn-has-sub" })
+                        </li>
+                    }
                     <li>
                         <a href="#" class="mn-has-sub">Eng <i class="fa fa-angle-down"></i></a>
 
                         <ul class="mn-sub">
-
                             <li><a href="">English</a></li>
                             <li><a href="">German</a></li>
                             <li><a href="">Bulgarian</a></li>
-
                         </ul>
-
                     </li>
-                    <!-- End Languages -->
-
                 </ul>
             </div>
             <!-- End Main Menu -->
-
-
         </div>
     </nav>
     <!-- End Navigation panel -->
@@ -70,6 +75,52 @@
     <div class="appear-animate">
         @RenderBody()
     </div>
+
+    <!-- Foter -->
+    <footer class="page-section bg-gray-lighter footer pb-60">
+        <div class="container">
+
+            <!-- Footer Logo -->
+            <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
+                <a href="#top"><img src="~/images/logo-gpg.jpg" width="78" height="36" alt="" /></a>
+            </div>
+            <!-- End Footer Logo -->
+            <!-- Social Links -->
+            <div class="footer-social-links mb-110 mb-xs-60">
+                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+            </div>
+            <!-- End Social Links -->
+            <!-- Footer Text -->
+            <div class="footer-text">
+
+                <!-- Copyright -->
+                <div class="footer-copy font-alt">
+                    <a href="http://themeforest.net/user/theme-guru/portfolio" target="_blank">&copy; GPG Design @(DateTime.Now.Year)</a>.
+                </div>
+                <!-- End Copyright -->
+
+                <div class="footer-made">
+                    Site design by
+                    <a href="https://www.linkedin.com/in/teofil-yankulov-59280b28/" target="_blank">Teofil Yankulov</a> and
+                    <a href="https://www.linkedin.com/in/dimitar-gaydardzhiev-a61772a6/" target="_blank">Dimitar Gaydardzhiev</a>
+                </div>
+
+            </div>
+            <!-- End Footer Text -->
+
+        </div>
+
+
+        <!-- Top Link -->
+        <div class="local-scroll">
+            <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
+        </div>
+        <!-- End Top Link -->
+
+    </footer>
+    <!-- End Foter -->
+
+    @await Component.InvokeAsync("NToastNotify")
 
     <!-- JS -->
     <script type="text/javascript" src="~/js/jquery-1.11.2.min.js"></script>
@@ -94,5 +145,7 @@
     <script type="text/javascript" src="~/js/all.js"></script>
     <script type="text/javascript" src="~/js/contact-form.js"></script>
     <script type="text/javascript" src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script type="text/javascript" src="~/js/custom-file-input.js"></script>
+    <script type="text/javascript" src="~/js/jquery.custom-file-input.js"></script>
 </body>
 </html>

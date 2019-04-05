@@ -70,6 +70,11 @@ namespace DataLayer
             return entity.Id;
         }
 
+        public void SaveChanges()
+        {
+            this.context.SaveChanges();
+        }
+
         public void DeleteRange(IEnumerable<T> entities)
         {
             foreach (var entity in entities)

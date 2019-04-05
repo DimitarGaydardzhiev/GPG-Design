@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NToastNotify;
+using NToastNotify.Libraries;
 
 namespace GPGDesign
 {
@@ -26,14 +28,29 @@ namespace GPGDesign
             services.AddDbContext<GPGContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<GPGContext>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 6;
+                config.Password.RequireDigit = false;
+                config.Password.RequireLowercase = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireUppercase = false;
+            })
+            .AddEntityFrameworkStores<GPGContext>()
+            .AddDefaultTokenProviders();
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            services
+                .AddMvc()
+                .AddNToastNotifyToastr(new ToastrOptions()
+                {
+                    ProgressBar = false,
+                    PositionClass = ToastPositions.BottomRight
+                });
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
@@ -55,6 +72,8 @@ namespace GPGDesign
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseNToastNotify();
 
             app.UseMvc(routes =>
             {
