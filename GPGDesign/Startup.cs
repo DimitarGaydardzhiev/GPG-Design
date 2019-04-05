@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using NToastNotify;
 using NToastNotify.Libraries;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace GPGDesign
