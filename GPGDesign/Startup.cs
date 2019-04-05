@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NToastNotify;
 using NToastNotify.Libraries;
+using System.Globalization;
 
 namespace GPGDesign
 {
@@ -42,15 +43,33 @@ namespace GPGDesign
             .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailSender, EmailSender>();            
 
-            services
-                .AddMvc()
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
+            services.AddMvc()
+                .AddViewLocalization(opts => { opts.ResourcesPath = "Resources"; })
+                .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization()
                 .AddNToastNotifyToastr(new ToastrOptions()
                 {
                     ProgressBar = false,
                     PositionClass = ToastPositions.BottomRight
-                });
+                });;
+
+            services.Configure<RequestLocalizationOptions>(opts =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("bg"),
+                    new CultureInfo("en"),
+                    new CultureInfo("en-US")
+                };
+
+                opts.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US");
+                opts.SupportedCultures = supportedCultures;
+                opts.SupportedUICultures = supportedCultures;
+            });
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
@@ -71,6 +90,10 @@ namespace GPGDesign
 
             app.UseStaticFiles();
 
+            var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(options.Value);
+
+            app.UseCookiePolicy();
             app.UseAuthentication();
 
             app.UseNToastNotify();

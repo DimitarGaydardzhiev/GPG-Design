@@ -3,13 +3,22 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using GPGDesign.Models.ContactModels;
+using Microsoft.Extensions.Localization;
 
 namespace GPGDesign.Controllers
 {
     public class ContactController : Controller
     {
+        private readonly IStringLocalizer<ContactController> _localizer;
+
+        public ContactController(IStringLocalizer<ContactController> localizer)
+        {
+            _localizer = localizer;
+        }
+
         public ActionResult Index()
         {
+            ViewData["Contact"] = _localizer["Contact"];
             return View(new EmailFormModel());
         }
 
