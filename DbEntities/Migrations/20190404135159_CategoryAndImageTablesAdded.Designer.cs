@@ -11,9 +11,10 @@ using System;
 namespace DbEntities.Migrations
 {
     [DbContext(typeof(GPGContext))]
-    partial class GPGContextModelSnapshot : ModelSnapshot
+    [Migration("20190404135159_CategoryAndImageTablesAdded")]
+    partial class CategoryAndImageTablesAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,8 +42,6 @@ namespace DbEntities.Migrations
                     b.Property<int>("CategoryId");
 
                     b.Property<string>("Description");
-
-                    b.Property<byte[]>("Image");
 
                     b.HasKey("Id");
 
@@ -213,7 +212,7 @@ namespace DbEntities.Migrations
             modelBuilder.Entity("DbEntities.Models.GalleryImage", b =>
                 {
                     b.HasOne("DbEntities.Models.Category", "Category")
-                        .WithMany("Images")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

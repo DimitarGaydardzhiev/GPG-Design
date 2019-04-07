@@ -1,36 +1,82 @@
-﻿@model RegisterViewModel
+﻿@model GPGDesign.Models.AccountViewModels.RegisterViewModel
+
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "GetById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewData["Title"]</h2>
-
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-default">Register</button>
-        </form>
-    </div>
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="loader">Loading...</div>
 </div>
+<!-- End Page Loader -->
 
-@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}
+<div class="page" id="top">
+    <section class="small-section bg-dark-lighter">
+        <div class="relative container align-left">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Register</h1>
+                </div>
+                <div class="col-md-4 mt-30">
+                    <div class="mod-breadcrumbs font-alt align-right">
+                        <a href="/">Home</a>&nbsp;/&nbsp;<span>Register</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Head Section -->
+    <!-- Section -->
+    <section class="page-section">
+        <div class="container relative">
+
+            <!-- Nav Tabs -->
+            <div class="align-center mb-40 mb-xxs-30">
+                <ul class="nav nav-tabs tpl-minimal-tabs">
+                    <li class="active">
+                        <a href="#mini-two" data-toggle="tab">Registration</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div id="mini-two">
+
+                <!-- Registry Form -->
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "contact_form", @class = "form contact-form" }))
+                        {
+                            <div class="clearfix">
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "input-md round form-control", placeholder = "Email", id = "Email" })
+                                    @Html.ValidationMessageFor(m => m.Email, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+
+                                <!-- Password -->
+                                <div class="form-group">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "input-md round form-control", placeholder = "Password", id = "password" })
+                                    @Html.ValidationMessageFor(m => m.Password, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+
+                                <!-- Re-enter Password -->
+                                <div class="form-group">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-md round form-control", placeholder = "Re-enter Password", id = "re-password" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, String.Empty, new { @style = "color:red;!important" })
+                                </div>
+                            </div>
+
+                            <!-- Send Button -->
+                            <div class="pt-10">
+                                <button class="submit_btn btn btn-mod btn-medium btn-round btn-full" id="reg-btn">Register</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- End Registry Form -->
+            </div>
+        </div>
+    </section>
+</div>

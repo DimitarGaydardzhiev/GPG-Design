@@ -1,4 +1,5 @@
-﻿using GPGDesign.Models;
+﻿using DbEntities.Models;
+using GPGDesign.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,9 @@ namespace GPGDesign.Data
             : base(options)
         {
         }
+
+        public DbSet<Category> Category { get; set; }
+        public DbSet<GalleryImage> GalleryImage { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

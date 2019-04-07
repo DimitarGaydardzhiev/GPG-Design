@@ -14,7 +14,7 @@
 
 
     <!-- Head Section -->
-    <section class="page-section bg-dark-alfa-70 parallax-3" data-background="images/full-width-images/section-bg-25.jpg">
+    @*<section class="page-section bg-dark-alfa-70 parallax-3" data-background="images/full-width-images/section-bg-25.jpg">
         <div class="relative container align-left">
 
             <div class="row">
@@ -23,10 +23,29 @@
                     <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">@ViewData["ContactLbl"]</h1>
                     <div class="hs-line-4 font-alt">
                         @ViewData["ContactTxt"]
+                    </div>              
+                </div>
+            </div>
+
+        </div>
+    </section>*@
+
+    <section class="small-section bg-dark-lighter">
+        <div class="relative container align-left">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Contact</h1>
+                    <div class="hs-line-4 font-alt">
+                        We’re always open to talk with you
                     </div>
                 </div>
-
+                <div class="col-md-4 mt-30">
+                    <div class="mod-breadcrumbs font-alt align-right">
+                        <a href="/">Home</a>&nbsp;/&nbsp;<span>Contact Us</span>
+                    </div>
+                </div>
             </div>
+        </div>
     </section>
     <!-- End Head Section -->
     <!-- Contact Section -->
@@ -171,50 +190,5 @@
 
     </div>
     <!-- End Google Map -->
-    <!-- Foter -->
-    <footer class="page-section bg-gray-lighter footer pb-60">
-        <div class="container">
-
-            <!-- Footer Logo -->
-            <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
-                <a href="#top"><img src="images/logo-gpg.jpg" width="78" height="36" alt="" /></a>
-            </div>
-            <!-- End Footer Logo -->
-            <!-- Social Links -->
-            <div class="footer-social-links mb-110 mb-xs-60">
-                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-            </div>
-            <!-- End Social Links -->
-            <!-- Footer Text -->
-            <div class="footer-text">
-
-                <!-- Copyright -->
-                <div class="footer-copy font-alt">
-                    <a href="http://themeforest.net/user/theme-guru/portfolio" target="_blank">&copy; GPG Design @(DateTime.Now.Year)</a>.
-                </div>
-                <!-- End Copyright -->
-
-                <div class="footer-made">
-                    Site design by
-                    <a href="https://www.linkedin.com/in/teofil-yankulov-59280b28/" target="_blank">Teofil Yankulov</a> and
-                    <a href="https://www.linkedin.com/in/dimitar-gaydardzhiev-a61772a6/" target="_blank">Dimitar Gaydardzhiev</a>
-                </div>
-
-            </div>
-            <!-- End Footer Text -->
-
-        </div>
-
-
-        <!-- Top Link -->
-        <div class="local-scroll">
-            <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
-        </div>
-        <!-- End Top Link -->
-
-    </footer>
-    <!-- End Foter -->
-
-
 </div>
 <!-- End Page Wrap -->

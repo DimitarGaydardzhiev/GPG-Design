@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using NToastNotify;
+using NToastNotify.Libraries;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -30,9 +32,18 @@ namespace GPGDesign
             services.AddDbContext<GPGContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<GPGContext>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 6;
+                config.Password.RequireDigit = false;
+                config.Password.RequireLowercase = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireUppercase = false;
+            })
+            .AddEntityFrameworkStores<GPGContext>()
+            .AddDefaultTokenProviders();
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();            
@@ -42,7 +53,12 @@ namespace GPGDesign
             services.AddMvc()
                 .AddViewLocalization(opts => { opts.ResourcesPath = "Resources"; })
                 .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
-                .AddDataAnnotationsLocalization();
+                .AddDataAnnotationsLocalization()
+                .AddNToastNotifyToastr(new ToastrOptions()
+                {
+                    ProgressBar = false,
+                    PositionClass = ToastPositions.BottomRight
+                });;
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {
@@ -82,6 +98,8 @@ namespace GPGDesign
 
             app.UseCookiePolicy();
             app.UseAuthentication();
+
+            app.UseNToastNotify();
 
             app.UseMvc(routes =>
             {

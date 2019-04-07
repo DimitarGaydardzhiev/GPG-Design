@@ -46,19 +46,31 @@
             <!-- Main Menu -->
             <div class="inner-nav desktop-nav">
                 <ul class="clearlist">
-
                     <!-- Item With Sub -->
+                    @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
+                    {
+                        <li>
+                            <a class="mn-has-sub">Hello, @Context.User.Identity.Name</a>
+                        </li>
+                    }
                     <li>
-                        <a href="#" class="mn-has-sub active"><i class="fa"></i>@Html.ActionLink("Home", "Index", "Home")</a>
+                        <a href="/" class="mn-has-sub active"><i class="fa"></i>@Html.ActionLink("Home", "Index", "Home")</a>
                     </li>
                     <li>
-                        <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Contact Us", "Contact", "Contact")</a>
+                        <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Contact Us", "Index", "Contact")</a>
                     </li>
-                    <!-- End Item With Sub -->
-                    <!-- Divider -->
-                    <li><a>&nbsp;</a></li>
-                    <!-- End Divider -->
-                    <!-- Languages -->
+                    <li>
+                        @await Component.InvokeAsync("CategoryList")
+                    </li>
+                    @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
+                    {
+                        <li>
+                            <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Registration", "Register", "Account")</a>
+                        </li>
+                        <li>
+                            @Html.ActionLink("Logout", "Logout", new { controller = "Account" }, new { @class = "mn-has-sub" })
+                        </li>
+                    }
                     <li>
                         <a href="#" class="mn-has-sub">@requestCulture.RequestCulture.UICulture.Name <i class="fa fa-angle-down"></i></a>
 
@@ -70,47 +82,100 @@
 
                         </form>
 
-                    </li>
-                   
+                        <ul class="mn-sub">
+                        <li>
+                            @Html.ActionLink("English", "Change", "Language", new { LanguageAbbreviation = "en" }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("German", "Change", "Language", new { LanguageAbbreviation = "de" }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Bulgarian", "Change", "Language", new { LanguageAbbreviation = "bg" }, null)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- End Main Menu -->
+    </div>
+</nav>
+<!-- End Navigation panel -->
+@*<partial name="_CookieConsentPartial" />*@
 
-                    <!-- End Languages -->
+<div class="appear-animate">
+    @RenderBody()
+</div>
 
-                </ul>
+    <!-- Foter -->
+    <footer class="page-section bg-gray-lighter footer pb-60">
+        <div class="container">
+
+            <!-- Footer Logo -->
+            <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
+                <a href="#top"><img src="~/images/logo-gpg.jpg" width="78" height="36" alt="" /></a>
             </div>
-            <!-- End Main Menu -->
+            <!-- End Footer Logo -->
+            <!-- Social Links -->
+            <div class="footer-social-links mb-110 mb-xs-60">
+                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+            </div>
+            <!-- End Social Links -->
+            <!-- Footer Text -->
+            <div class="footer-text">
 
+                <!-- Copyright -->
+                <div class="footer-copy font-alt">
+                    <a href="http://themeforest.net/user/theme-guru/portfolio" target="_blank">&copy; GPG Design @(DateTime.Now.Year)</a>.
+                </div>
+                <!-- End Copyright -->
+
+                <div class="footer-made">
+                    Site design by
+                    <a href="https://www.linkedin.com/in/teofil-yankulov-59280b28/" target="_blank">Teofil Yankulov</a> and
+                    <a href="https://www.linkedin.com/in/dimitar-gaydardzhiev-a61772a6/" target="_blank">Dimitar Gaydardzhiev</a>
+                </div>
+
+            </div>
+            <!-- End Footer Text -->
 
         </div>
-    </nav>
-    <!-- End Navigation panel -->
-    @*<partial name="_CookieConsentPartial" />*@
 
-    <div class="appear-animate">
-        @RenderBody()
-    </div>
 
-    <!-- JS -->
-    <script type="text/javascript" src="~/js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/js/SmoothScroll.js"></script>
-    <script type="text/javascript" src="~/js/jquery.scrollTo.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery.localScroll.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery.viewport.mini.js"></script>
-    <script type="text/javascript" src="~/js/jquery.countTo.js"></script>
-    <script type="text/javascript" src="~/js/jquery.appear.js"></script>
-    <script type="text/javascript" src="~/js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="~/js/jquery.parallax-1.1.3.js"></script>
-    <script type="text/javascript" src="~/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="~/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="~/js/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="~/js/imagesloaded.pkgd.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="~/js/wow.min.js"></script>
-    <script type="text/javascript" src="~/js/masonry.pkgd.min.js"></script>
-    <script type="text/javascript" src="~/js/jquery.simple-text-rotator.min.js"></script>
-    <script type="text/javascript" src="~/js/all.js"></script>
-    <script type="text/javascript" src="~/js/contact-form.js"></script>
-    <script type="text/javascript" src="~/js/jquery.ajaxchimp.min.js"></script>
+        <!-- Top Link -->
+        <div class="local-scroll">
+            <a href="#top" class="link-to-top"><i class="fa fa-caret-up"></i></a>
+        </div>
+        <!-- End Top Link -->
+
+    </footer>
+    <!-- End Foter -->
+
+    @await Component.InvokeAsync("NToastNotify")
+
+<!-- JS -->
+<script type="text/javascript" src="~/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/js/SmoothScroll.js"></script>
+<script type="text/javascript" src="~/js/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.localScroll.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.viewport.mini.js"></script>
+<script type="text/javascript" src="~/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="~/js/jquery.appear.js"></script>
+<script type="text/javascript" src="~/js/jquery.sticky.js"></script>
+<script type="text/javascript" src="~/js/jquery.parallax-1.1.3.js"></script>
+<script type="text/javascript" src="~/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="~/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="~/js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="~/js/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="~/js/wow.min.js"></script>
+<script type="text/javascript" src="~/js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.simple-text-rotator.min.js"></script>
+<script type="text/javascript" src="~/js/all.js"></script>
+<script type="text/javascript" src="~/js/contact-form.js"></script>
+<script type="text/javascript" src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script type="text/javascript" src="~/js/custom-file-input.js"></script>
+    <script type="text/javascript" src="~/js/jquery.custom-file-input.js"></script>
 </body>
 </html>
