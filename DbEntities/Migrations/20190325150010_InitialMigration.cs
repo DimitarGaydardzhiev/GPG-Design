@@ -192,6 +192,12 @@ namespace DbEntities.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            // Seed admin user
+            string userCommand = @"INSERT INTO AspNetUsers(Id, AccessFailedCount, ConcurrencyStamp, Email, EmailConfirmed, LockoutEnabled, NormalizedEmail, NormalizedUserName, PasswordHash, PhoneNumber, PhoneNumberConfirmed, SecurityStamp, TwoFactorEnabled, UserName)
+                                   VALUES ('9e01f90a-0260-462d-8799-8ef8a5dfaa51', 0, '3afd26a5-34f4-4a56-a3d2-1078256077b5', 'officegpgdesign@gmail.com', 1, 1, 'OFFICEGPGDESIGN@GMAIL.COM', 'OFFICEGPGDESIGN@GMAIL.COM', 'AQAAAAEAACcQAAAAECevhfdlHa9rwSfUpPOyAc866t6gpPhKBrX++H4VTm1blKv5PTZrSNJwcvNWIlbjIw==', NULL, 0, '636fb1e3-f620-40f0-a5f1-bdc1b0f56baf', 0, 'officegpgdesign@gmail.com')";
+
+            migrationBuilder.Sql(userCommand);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
