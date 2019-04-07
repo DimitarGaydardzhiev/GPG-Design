@@ -26,6 +26,7 @@ namespace GPGDesign
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddDbContext<GPGContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -49,10 +50,10 @@ namespace GPGDesign
                 {
                     new CultureInfo("bg"),
                     new CultureInfo("en"),
-                    new CultureInfo("en-US")
+                    new CultureInfo("de")
                 };
 
-                opts.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US");
+                opts.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en");
                 opts.SupportedCultures = supportedCultures;
                 opts.SupportedUICultures = supportedCultures;
             });

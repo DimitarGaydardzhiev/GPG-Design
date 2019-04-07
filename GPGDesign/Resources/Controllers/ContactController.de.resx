@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContactLbl" xml:space="preserve">
-    <value>Контакти</value>
+    <value>KONTAKTEN</value>
   </data>
   <data name="ContactTxt" xml:space="preserve">
-    <value>Моля свържете се с нас, като ползвате формата по-долу!</value>
+    <value>ALABALA</value>
   </data>
 </root>

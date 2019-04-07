@@ -4,6 +4,7 @@ using System.Web;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 
 namespace GPGDesign.Controllers
 {
@@ -12,19 +13,18 @@ namespace GPGDesign.Controllers
         public IActionResult Index()
         {
             return View();
-        }
+        }       
 
-        public ActionResult Change(string LanguageAbbreviation)
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
         {
-            if (LanguageAbbreviation != null)
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(LanguageAbbreviation);
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(LanguageAbbreviation);                
-            }
-            CookieOptions option = new CookieOptions();
-            Response.Cookies.Append("Language", LanguageAbbreviation, option);
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
 
-            return View("Index");
+            return LocalRedirect(returnUrl);
         }
     }
 }

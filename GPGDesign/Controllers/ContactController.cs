@@ -16,9 +16,11 @@ namespace GPGDesign.Controllers
             _localizer = localizer;
         }
 
-        public ActionResult Index()
+        public ActionResult Contact()
         {
-            ViewData["Contact"] = _localizer["Contact"];
+            ViewData["ContactLbl"] = _localizer["ContactLbl"];            
+            ViewData["ContactTxt"] = _localizer["ContactTxt"];
+
             return View(new EmailFormModel());
         }
 
@@ -36,8 +38,8 @@ namespace GPGDesign.Controllers
                     UserName = "officegpgdesign@gmail.com",
                     Password = fromPassword
                 };
-                
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";                
+
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
 
                 var smtp = new SmtpClient
                 {
@@ -57,7 +59,7 @@ namespace GPGDesign.Controllers
                 {
                     smtp.Send(message);
                     Response.Redirect("/Home");
-                    
+
                 }
             }
         }

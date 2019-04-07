@@ -1,4 +1,20 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+@{
     ViewData["Title"] = "GPG Design";
 }
 
@@ -20,7 +36,7 @@
                     <div class="home-text">
 
                         <h1 class="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
-                            We Are just crative people
+                            @ViewData["HomeMainLbl"]
                         </h1>
 
                         <h2 class="hs-line-14 font-alt mb-50 mb-xs-30">
@@ -99,7 +115,15 @@
 
     </div>
     <!-- End Fullwidth Slider -->
-    
+
+    <form asp-controller="Language" asp-action="SetLanguage" style="margin-top:20px;"
+          asp-route-returnUrl="@Context.Request.Path"
+          method="post" class="form-horizontal">
+       <select name="culture" onchange="this.form.submit();"
+                                        asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                                        asp-items="cultureItems"></select>
+    </form>
+
     <!-- About Section -->
     <section class="page-section" id="about">
         <div class="container relative">
@@ -1295,7 +1319,7 @@
             <!-- End Footer Logo -->
             <!-- Social Links -->
             <div class="footer-social-links mb-110 mb-xs-60">
-                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>                
+                <a href="#" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
             </div>
             <!-- End Social Links -->
             <!-- Footer Text -->
