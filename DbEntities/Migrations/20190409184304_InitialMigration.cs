@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace DbEntities.Migrations
 {
@@ -46,6 +47,19 @@ namespace DbEntities.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,6 +168,27 @@ namespace DbEntities.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "GalleryImage",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CategoryId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Image = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GalleryImage", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_GalleryImage_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -193,11 +228,19 @@ namespace DbEntities.Migrations
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_GalleryImage_CategoryId",
+                table: "GalleryImage",
+                column: "CategoryId");
+
             // Seed admin user
             string userCommand = @"INSERT INTO AspNetUsers(Id, AccessFailedCount, ConcurrencyStamp, Email, EmailConfirmed, LockoutEnabled, NormalizedEmail, NormalizedUserName, PasswordHash, PhoneNumber, PhoneNumberConfirmed, SecurityStamp, TwoFactorEnabled, UserName)
                                    VALUES ('9e01f90a-0260-462d-8799-8ef8a5dfaa51', 0, '3afd26a5-34f4-4a56-a3d2-1078256077b5', 'officegpgdesign@gmail.com', 1, 1, 'OFFICEGPGDESIGN@GMAIL.COM', 'OFFICEGPGDESIGN@GMAIL.COM', 'AQAAAAEAACcQAAAAECevhfdlHa9rwSfUpPOyAc866t6gpPhKBrX++H4VTm1blKv5PTZrSNJwcvNWIlbjIw==', NULL, 0, '636fb1e3-f620-40f0-a5f1-bdc1b0f56baf', 0, 'officegpgdesign@gmail.com')";
 
             migrationBuilder.Sql(userCommand);
+
+            string categoriesCommand = File.ReadAllText("..\\DbEntities\\Seed\\CategoriesSeed.sql");
+            migrationBuilder.Sql(categoriesCommand);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -218,10 +261,16 @@ namespace DbEntities.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "GalleryImage");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Category");
         }
     }
 }

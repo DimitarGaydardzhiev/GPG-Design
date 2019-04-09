@@ -11,6 +11,6 @@ namespace GPGDesign.Models
         [StringLength(50, MinimumLength = 1)]
         public string Name { get; set; }
 
-        public IEnumerable<ImageViewModel> Images { get; set; }
+        public IList<ImageViewModel> Images { get; set; }
     }
 }
