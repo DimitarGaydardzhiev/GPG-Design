@@ -95,6 +95,7 @@ namespace GPGDesign.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult UploadImages(CategoryViewModel model, List<IFormFile> files)
         {
             if (files.Count == 0)
@@ -133,6 +134,7 @@ namespace GPGDesign.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult DeleteImages(IEnumerable<ImageViewModel> images, int id)
         {
             var imagesForDelete = galleryImageRepository
