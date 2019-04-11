@@ -11,8 +11,8 @@ using System;
 namespace DbEntities.Migrations
 {
     [DbContext(typeof(GPGContext))]
-    [Migration("20190405083151_ImageBytArrayPropertyAdded")]
-    partial class ImageBytArrayPropertyAdded
+    [Migration("20190409184304_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -95,6 +95,7 @@ namespace GPGDesign.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult UploadImages(CategoryViewModel model, List<IFormFile> files)
         {
             if (files.Count == 0)
@@ -130,6 +131,35 @@ namespace GPGDesign.Controllers
             galleryImageRepository.SaveChanges();
             ShowNotification(Messages.ImageUploadSuccess, ToastrSeverity.Success);
             return RedirectToAction("GetById", new { id = model.Id });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult DeleteImages(IEnumerable<ImageViewModel> images, int id)
+        {
+            var imagesForDelete = galleryImageRepository
+                .All()
+                .Where(i => images.Any(x => x.Id == i.Id && x.IsSelected));
+
+
+            if (imagesForDelete.Count() > 0)
+            {
+                try
+                {
+                    this.galleryImageRepository.DeleteRange(imagesForDelete);
+                    this.galleryImageRepository.SaveChanges();
+                    ShowNotification(Messages.SuccessDelete, ToastrSeverity.Success);
+                }
+                catch (Exception ex)
+                {
+                    ShowNotification(Messages.DeleteError, ToastrSeverity.Error);
+                }
+
+                return RedirectToAction("GetById", new { id });
+            }
+
+            ShowNotification(Messages.NoImagesSelected, ToastrSeverity.Error);
+            return RedirectToAction("GetById", new { id });
         }
     }
 }

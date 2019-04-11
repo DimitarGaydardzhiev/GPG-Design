@@ -36,17 +36,41 @@
                 <!-- Photo Grid -->
                 <div class="row multi-columns-row mb-30 mb-xs-10">
                     <!-- Photo Item -->
-                    @foreach (var image in Model.Images)
+                    @using (Html.BeginForm("DeleteImages", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <div class="col-md-3 col-lg-3 mb-md-10">
-                            <div class="post-prev-img">
-                                <a href=@image.Src class="lightbox-gallery-2 mfp-image"><img src=@image.Src alt="" /></a>
+                        @for (int i = 0; i < Model.Images.Count; i++)
+                        {
+                            <div class="col-md-3 col-lg-3 mb-md-10">
+                                <div class="post-prev-img">
+                                    <a href=@Model.Images[i].Src class="lightbox-gallery-2 mfp-image"><img src=@Model.Images[i].Src alt="" /></a>
+                                    @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
+                                    {
+                                        <div class="funkyradio">
+                                            <div class="funkyradio-success">
+                                                @Html.HiddenFor(m => Model.Images[i].Id)
+                                                @Html.CheckBoxFor(m => Model.Images[i].IsSelected)
+                                                @Html.LabelFor(m => Model.Images[i].IsSelected)
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                             </div>
-                        </div>
+                        }
+                        @Html.HiddenFor(m => Model.Id)
+                        @if (Model.Images.Count() > 0 && !string.IsNullOrEmpty(Context.User.Identity.Name))
+                        {
+                            <div class="col-md-12">
+                                <button class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Delete Selected</button>
+                            </div>
+                            <div class="col-md-12 delete-all">
+                                <button class="btn btn-danger" id="delete_all">Delete All</button>
+                            </div>
+                        }
                     }
                     <!-- End Photo Item -->
                 </div>
-                <!-- End Photo Grid --><div class="row">
+                <!-- End Photo Grid -->
+                <div class="col-md-3">
                     @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
                     {
                         @using (Html.BeginForm("UploadImages", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -69,3 +93,13 @@
         <!-- End Section -->
     </div>
 </body>
+
+<script type="text/javascript">
+    document.getElementById("delete_all").addEventListener("click", function () {
+        var allInputs = document.getElementsByTagName("input");
+        for (var i = 0, max = allInputs.length; i < max; i++) {
+            if (allInputs[i].type === 'checkbox')
+                allInputs[i].checked = true;
+        }
+    });
+</script>

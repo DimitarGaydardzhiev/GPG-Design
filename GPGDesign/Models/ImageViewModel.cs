@@ -1,4 +1,6 @@
-﻿namespace GPGDesign.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GPGDesign.Models
 {
     public class ImageViewModel
     {
@@ -8,6 +10,7 @@
 
         public string Description { get; set; }
 
+        [Display(Name = "Select")]
         public bool IsSelected { get; set; }
     }
 }
