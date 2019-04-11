@@ -15,6 +15,7 @@ namespace GPGDesign.Controllers
         public IActionResult Index()
         {
             ViewData["HomeMainLbl"] = _localizer["HomeMainLbl"];
+            ViewData["HomeWeOffer"] = _localizer["HomeWeOffer"];
             return View();
         }
     }

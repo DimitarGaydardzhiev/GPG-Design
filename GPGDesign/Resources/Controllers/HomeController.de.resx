@@ -120,4 +120,7 @@
   <data name="HomeMainLbl" xml:space="preserve">
     <value>We Are just crative people</value>
   </data>
+  <data name="HomeWeOffer" xml:space="preserve">
+    <value>Wir bieten dir</value>
+  </data>
 </root>

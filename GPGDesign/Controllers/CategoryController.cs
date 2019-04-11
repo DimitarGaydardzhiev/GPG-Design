@@ -53,7 +53,10 @@ namespace GPGDesign.Controllers
 
             this.categoryRepository.Add(new Category()
             {
-                Name = model.Name
+                Name = model.Name,
+                EnDescription = model.EnDescription,
+                DeDescription = model.DeDescription,
+                BgDescription = model.BgDescription
             });
 
             this.categoryRepository.SaveChanges();

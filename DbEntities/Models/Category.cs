@@ -17,6 +17,15 @@ namespace DbEntities.Models
         [Required]
         public string Name { get; set; }
 
+        [Required]
+        public string EnDescription { get; set; }
+
+        [Required]
+        public string DeDescription { get; set; }
+
+        [Required]
+        public string BgDescription { get; set; }
+
         public IEnumerable<GalleryImage> Images { get; set; }
     }
 }
