@@ -41,15 +41,15 @@
                             @Html.ValidationMessageFor(m => m.Name, String.Empty, new { @style = "color:red;!important" })
                         </div>
                         <div class="form-group">
-                            @Html.TextBoxFor(m => m.EnDescription, new { @class = "input-md round form-control", placeholder = "Описание на английски", id = "enDescription" })
+                            @Html.TextAreaFor(m => m.EnDescription, new { @class = "input-md round form-control", placeholder = "Описание на английски", id = "enDescription", rows = "3" })
                             @Html.ValidationMessageFor(m => m.EnDescription, String.Empty, new { @style = "color:red;!important" })
                         </div>
                         <div class="form-group">
-                            @Html.TextBoxFor(m => m.DeDescription, new { @class = "input-md round form-control", placeholder = "Описание на немски", id = "deDescription" })
+                            @Html.TextAreaFor(m => m.DeDescription, new { @class = "input-md round form-control", placeholder = "Описание на немски", id = "deDescription", rows = "3" })
                             @Html.ValidationMessageFor(m => m.DeDescription, String.Empty, new { @style = "color:red;!important" })
                         </div>
                         <div class="form-group">
-                            @Html.TextBoxFor(m => m.BgDescription, new { @class = "input-md round form-control", placeholder = "Описание на български", id = "bgDescription" })
+                            @Html.TextAreaFor(m => m.BgDescription, new { @class = "input-md round form-control", placeholder = "Описание на български", id = "bgDescription", rows = "3" })
                             @Html.ValidationMessageFor(m => m.BgDescription, String.Empty, new { @style = "color:red;!important" })
                         </div>
                     </div>
