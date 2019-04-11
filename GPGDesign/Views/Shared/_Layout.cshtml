@@ -73,10 +73,10 @@
                     }
                     <li>
                         <a href="#" class="mn-has-sub">@requestCulture.RequestCulture.UICulture.Name <i class="fa fa-angle-down"></i></a>
-
+                        
                         <form asp-controller="Language" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" method="post">
 
-                            <select name="culture" onchange="this.form.submit();"
+                            <select class="mn-sub" style="background-color: white;" name="culture" onchange="this.form.submit();"
                                     asp-for="@requestCulture.RequestCulture.UICulture.Name"
                                     asp-items="cultureItems"></select>
 
@@ -113,7 +113,7 @@
 
                 <!-- Copyright -->
                 <div class="footer-copy font-alt">
-                    <a href="http://themeforest.net/user/theme-guru/portfolio" target="_blank">&copy; GPG Design @(DateTime.Now.Year)</a>.
+                    GPG Design @(DateTime.Now.Year)
                 </div>
                 <!-- End Copyright -->
 
