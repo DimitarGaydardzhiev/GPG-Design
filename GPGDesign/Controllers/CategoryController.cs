@@ -45,7 +45,19 @@ namespace GPGDesign.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            if (this.categoryRepository.All().Any(c => c.Name == model.Name))
+            if (this.categoryRepository.All().Any(c => c.EnName == model.EnName))
+            {
+                ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
+                return View();
+            }
+
+            if (this.categoryRepository.All().Any(c => c.DeName == model.DeName))
+            {
+                ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
+                return View();
+            }
+
+            if (this.categoryRepository.All().Any(c => c.BgName == model.BgName))
             {
                 ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
                 return View();
@@ -53,7 +65,9 @@ namespace GPGDesign.Controllers
 
             this.categoryRepository.Add(new Category()
             {
-                Name = model.Name,
+                EnName = model.EnName,
+                DeName = model.DeName,
+                BgName = model.BgName,
                 EnDescription = model.EnDescription,
                 DeDescription = model.DeDescription,
                 BgDescription = model.BgDescription
@@ -90,7 +104,7 @@ namespace GPGDesign.Controllers
 
             var result = new CategoryViewModel()
             {
-                Name = category.Name,
+                EnName = category.EnName,
                 Images = images
             };
 

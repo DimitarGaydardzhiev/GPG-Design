@@ -15,7 +15,13 @@ namespace DbEntities.Models
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string EnName { get; set; }
+
+        [Required]
+        public string DeName { get; set; }
+
+        [Required]
+        public string BgName { get; set; }
 
         [Required]
         public string EnDescription { get; set; }
@@ -27,5 +33,7 @@ namespace DbEntities.Models
         public string BgDescription { get; set; }
 
         public IEnumerable<GalleryImage> Images { get; set; }
+        
+        public byte[] Thumbnail { get; set; }
     }
 }

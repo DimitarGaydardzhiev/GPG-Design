@@ -6,7 +6,7 @@
     <ul class="mn-sub">
         @foreach (var item in Model)
         {
-            <li>@Html.ActionLink((string)item.Name, "GetById", "Category", new { id = item.Id })</li>
+            <li>@Html.ActionLink((string)item.EnName, "GetById", "Category", new { id = item.Id })</li>
         }
         @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
         {

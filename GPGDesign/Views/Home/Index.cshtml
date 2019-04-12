@@ -1,21 +1,23 @@
-﻿@using Microsoft.AspNetCore.Builder
+﻿@model ListCategoryViewModel
+@using Microsoft.AspNetCore.Builder
 @using Microsoft.AspNetCore.Http.Features
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Options
+@using System.Globalization
 
 @inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
+    ViewData["Title"] = "GPG Design";
+
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cultureItems = LocOptions.Value.SupportedUICultures
         .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
         .ToList();
-}
 
-@{
-    ViewData["Title"] = "GPG Design";
+    var culture = CultureInfo.CurrentCulture.Name;
 }
 
 <div class="page-loader">
@@ -119,9 +121,9 @@
     <form asp-controller="Language" asp-action="SetLanguage" style="margin-top:20px;"
           asp-route-returnUrl="@Context.Request.Path"
           method="post" class="form-horizontal">
-       <select name="culture" onchange="this.form.submit();"
-                                        asp-for="@requestCulture.RequestCulture.UICulture.Name"
-                                        asp-items="cultureItems"></select>
+        <select name="culture" onchange="this.form.submit();"
+                asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                asp-items="cultureItems"></select>
     </form>
 
     <!-- About Section -->
@@ -602,97 +604,42 @@
 
             <!-- Features Grid -->
             <div class="row multi-columns-row alt-features-grid">
+                @foreach (var cat in Model.AllCategories)
+                {
+                    var categoryName = string.Empty;
+                    var categoryDescription = string.Empty;
 
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-flag"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We’re Creative</h3>
-                        <div class="alt-features-descr align-left">
-                            Lorem ipsum dolor sit amet, c-r adipiscing elit.
-                            In maximus ligula semper metus pellentesque mattis.
-                            Maecenas  volutpat, diam enim.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-clock"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We’re Punctual</h3>
-                        <div class="alt-features-descr align-left">
-                            Proin fringilla augue at maximus vestibulum.
-                            Nam pulvinar vitae neque et porttitor. Praesent sed
-                            nisi eleifend, lorem fermentum orci sit amet, iaculis libero.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-hotairballoon"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We have magic</h3>
-                        <div class="alt-features-descr align-left">
-                            Curabitur iaculis accumsan augue, nec finibus mauris pretium eu.
-                            Duis placerat ex gravida nibh tristique porta. Nulla facilisi.
-                            Suspendisse ultricies eros blandit.
+                    @if (culture == "en")
+                    {
+                        categoryName = cat.EnName;
+                        categoryDescription = cat.EnDescription;
+                    }
+                    else if (culture == "de")
+                    {
+                        categoryName = cat.DeName;
+                        categoryDescription = cat.DeDescription;
+                    }
+                    else
+                    {
+                        categoryName = cat.BgName;
+                        categoryDescription = cat.BgDescription;
+                    }
+
+                    <!-- Features Item -->
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="alt-features-item align-center">
+                            <div class="alt-features-icon">
+                                <span class="icon-flag"></span>
+                            </div>
+                            <h3 class="alt-features-title font-alt">@categoryName</h3>
+                            <div class="alt-features-descr align-center">
+                                @categoryDescription
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- End Features Item -->
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-heart"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We love minimalism</h3>
-                        <div class="alt-features-descr align-left">
-                            Cras luctus interdum sodales. Quisque quis odio dui. Sedes sit
-                            amet neque malesuada, lobortis  commodo magna ntesque pharetra
-                            metus vivera sagittis.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-linegraph"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We’re responsible</h3>
-                        <div class="alt-features-descr align-left">
-                            Fusce aliquet quam eget neque ultrices elementum. Nulla posuere
-                            felis id arcu blandit sagittis. Eleifender vestibulum purus, sit
-                            amet vulputate risus.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                <!-- Features Item -->
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="alt-features-item align-center">
-                        <div class="alt-features-icon">
-                            <span class="icon-chat"></span>
-                        </div>
-                        <h3 class="alt-features-title font-alt">We're Friendly</h3>
-                        <div class="alt-features-descr align-left">
-                            Pulvinar vitae neque et porttitor. Integer non dapibus diam, ac
-                            eleifend lectus. Praesent sed nisi eleifend, fermentum orci sit
-                            amet, iaculis libero interdum.
-                        </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
+                    <!-- End Features Item -->
+                }
+
 
             </div>
             <!-- End Features Grid -->

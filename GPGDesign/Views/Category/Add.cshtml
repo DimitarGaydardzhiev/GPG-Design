@@ -26,27 +26,42 @@
                     </li>
                 </ul>
             </div>
-            <div class="row">
+            <div class="row">          
+
                 <div class="col-md-4 col-md-offset-4">
                     @using (Html.BeginForm("Add", "Category", FormMethod.Post, new { id = "contact_form", @class = "form contact-form" }))
                     {
+
                     <div class="clearfix">
+                        <!--English-->
                         <div class="form-group">
-                            @Html.TextBoxFor(m => m.Name, new { @class = "input-md round form-control", placeholder = "Име на категория", id = "name" })
-                            @Html.ValidationMessageFor(m => m.Name, String.Empty, new { @style = "color:red;!important" })
+                            @Html.TextBoxFor(m => m.EnName, new { @class = "input-md round form-control", placeholder = "Kатегория на английски", id = "enName" })
+                            @Html.ValidationMessageFor(m => m.EnName, String.Empty, new { @style = "color:red;!important" })
                         </div>
                         <div class="form-group">
                             @Html.TextAreaFor(m => m.EnDescription, new { @class = "input-md round form-control", placeholder = "Описание на английски", id = "enDescription", rows = "3" })
                             @Html.ValidationMessageFor(m => m.EnDescription, String.Empty, new { @style = "color:red;!important" })
                         </div>
+
+                        <!--German-->
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.DeName, new { @class = "input-md round form-control", placeholder = "Категория на немски", id = "deName" })
+                            @Html.ValidationMessageFor(m => m.DeName, String.Empty, new { @style = "color:red;!important" })
+                        </div>
                         <div class="form-group">
                             @Html.TextAreaFor(m => m.DeDescription, new { @class = "input-md round form-control", placeholder = "Описание на немски", id = "deDescription", rows = "3" })
                             @Html.ValidationMessageFor(m => m.DeDescription, String.Empty, new { @style = "color:red;!important" })
                         </div>
+
+                        <!--Bulgarian-->
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.BgName, new { @class = "input-md round form-control", placeholder = "Категория на български", id = "bgName" })
+                            @Html.ValidationMessageFor(m => m.EnName, String.Empty, new { @style = "color:red;!important" })
+                        </div>
                         <div class="form-group">
                             @Html.TextAreaFor(m => m.BgDescription, new { @class = "input-md round form-control", placeholder = "Описание на български", id = "bgDescription", rows = "3" })
                             @Html.ValidationMessageFor(m => m.BgDescription, String.Empty, new { @style = "color:red;!important" })
-                        </div>
+                        </div>                      
                     </div>
                         <div class="align-right pt-10">
                             <button class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Добави</button>
@@ -54,6 +69,6 @@
                     }
                 </div>
             </div>
-        </div>
+            </div>
     </section>
 </div>
