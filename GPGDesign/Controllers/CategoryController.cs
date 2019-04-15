@@ -40,10 +40,10 @@ namespace GPGDesign.Controllers
 
         [HttpPost]
         [Authorize]
-        public IActionResult Add(CategoryViewModel model)
+        public IActionResult Add(CategoryViewModel model, IFormFile file)
         {
-            if (!ModelState.IsValid)
-                return View(model);
+            //if (!ModelState.IsValid)
+            //    return View(model);
 
             if (this.categoryRepository.All().Any(c => c.EnName == model.EnName))
             {
@@ -63,6 +63,18 @@ namespace GPGDesign.Controllers
                 return View();
             }
 
+            string img = string.Empty;
+
+            if (file.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    img = ImageWorker.ResizeImage(ms);
+                }
+            }
+
+
             this.categoryRepository.Add(new Category()
             {
                 EnName = model.EnName,
@@ -70,7 +82,9 @@ namespace GPGDesign.Controllers
                 BgName = model.BgName,
                 EnDescription = model.EnDescription,
                 DeDescription = model.DeDescription,
-                BgDescription = model.BgDescription
+                BgDescription = model.BgDescription,
+                Thumbnail = Base64ToByteArray(img)
+
             });
 
             this.categoryRepository.SaveChanges();
