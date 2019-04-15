@@ -31,5 +31,7 @@ namespace GPGDesign.Models
         public IList<ImageViewModel> Images { get; set; }
         
         public string Thumbnail { get; set; }
+
+        public int NumberOfImages { get; set; }
     }
 }

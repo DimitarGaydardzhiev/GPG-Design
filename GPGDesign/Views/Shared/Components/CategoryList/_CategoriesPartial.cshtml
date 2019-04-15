@@ -10,7 +10,8 @@
         }
         @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
         {
-            <li>@Html.ActionLink("Add Category", "Add", "Category")</li>
+            @*<li>@Html.ActionLink("Add Category", "Add", "Category")</li>*@
+            <li>@Html.ActionLink("Всички категории", "All", "Category")</li>
         }
     </ul>
 </li>

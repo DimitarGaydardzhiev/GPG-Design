@@ -65,7 +65,7 @@ namespace GPGDesign.Controllers
 
             string img = string.Empty;
 
-            if (file.Length > 0)
+            if (file != null && file.Length > 0)
             {
                 using (var ms = new MemoryStream())
                 {
@@ -90,6 +90,53 @@ namespace GPGDesign.Controllers
             this.categoryRepository.SaveChanges();
             ShowNotification(Messages.SuccessAdd, ToastrSeverity.Success);
             return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult All()
+        {
+            var categories = categoryRepository.All()
+                .Include(c => c.Images);
+
+            if (categories == null)
+            {
+                ShowNotification(Messages.ObjectNotFound, ToastrSeverity.Error);
+                return View();
+            }
+
+            var result = new List<CategoryViewModel>();
+            foreach (var category in categories)
+            {
+                result.Add(new CategoryViewModel()
+                {
+                    Id = category.Id,
+                    BgName = category.BgName,
+                    NumberOfImages = category.Images.Count()
+                });
+            }
+
+            return View(result);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            var category = categoryRepository.All()
+                .Include(c => c.Images)
+                .FirstOrDefault(c => c.Id == id);
+
+            if (category == null)
+            {
+                ShowNotification(Messages.ObjectNotFound, ToastrSeverity.Error);
+                return View();
+            }
+
+            this.categoryRepository.Delete(category);
+            this.categoryRepository.SaveChanges();
+            ShowNotification(Messages.SuccessDelete, ToastrSeverity.Success);
+            return RedirectToAction("All");
         }
 
         [HttpGet]

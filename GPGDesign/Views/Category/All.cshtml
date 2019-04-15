@@ -1,0 +1,66 @@
+﻿@model IEnumerable<GPGDesign.Models.CategoryViewModel>
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="loader">Loading...</div>
+</div>
+<!-- End Page Loader -->
+
+<div class="page" id="top">
+    <section class="small-section bg-dark-lighter">
+        <div class="relative container align-left">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Всички категории</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Head Section -->
+    <!-- Section -->
+    <section class="page-section">
+        <div class="container relative">
+            <div class="align-center mb-40 mb-xxs-30">
+                <ul class="nav nav-tabs tpl-minimal-tabs">
+                    <li class="active">
+                        <a href="#mini-one" data-toggle="tab">При натискане на "Изтрии" категорията ще се изтрие, заедно с всички снимки към нея!</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <table class="table table-borderless table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Име</th>
+                            <th scope="col">Брой снимки</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td>@category.BgName</td>
+                                <td>@category.NumberOfImages</td>
+                                <td>
+                                    @Html.ActionLink("Изтрии", "Delete", "Category", new { id = category.Id }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            @Html.ActionLink("Добави", "Add", "Category")
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                @Html.ActionLink("Добави", "Add", "Category", new { id = "add" }, new { @class = "btn btn-success" })
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
