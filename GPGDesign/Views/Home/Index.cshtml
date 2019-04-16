@@ -625,18 +625,22 @@
                         categoryDescription = cat.BgDescription;
                     }
 
-                    <!-- Features Item -->                    
-                    <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="alt-features-item align-center">
-                            <div class="alt-features-icon">
-                                <img src=@cat.Thumbnail style="height:120px; width:120px;" alt="" />
-                            </div>
-                            <h3 class="alt-features-title font-alt">@categoryName</h3>
-                            <div class="alt-features-descr align-center">
-                                @categoryDescription
+                    <!-- Features Item -->
+                    <a asp-controller="Category"
+                       asp-action="GetById"
+                       asp-route-id="@cat.Id">
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <div class="alt-features-item align-center">
+                                <div class="alt-features-icon">
+                                    <img src=@cat.Thumbnail style="height:120px; width:120px;" alt="" />
+                                </div>
+                                <h3 class="alt-features-title font-alt">@categoryName</h3>
+                                <div class="alt-features-descr align-center">
+                                    @categoryDescription
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- End Features Item -->
                 }
 

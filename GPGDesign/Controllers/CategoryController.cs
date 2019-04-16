@@ -112,7 +112,8 @@ namespace GPGDesign.Controllers
                 {
                     Id = category.Id,
                     BgName = category.BgName,
-                    NumberOfImages = category.Images.Count()
+                    NumberOfImages = category.Images.Count(),
+                    HasThumbnail = category.Thumbnail != null ? "ИМА" : "НЯМА"
                 });
             }
 

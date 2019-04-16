@@ -32,19 +32,21 @@
                         <tr>
                             <th scope="col">Име</th>
                             <th scope="col">Брой снимки</th>
+                            <th scope="col">Тъмбнейл</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var category in Model)
                         {
-                            <tr>
-                                <td>@category.BgName</td>
-                                <td>@category.NumberOfImages</td>
-                                <td>
-                                    @Html.ActionLink("Изтрии", "Delete", "Category", new { id = category.Id }, new { @class = "btn btn-danger" })
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>@category.BgName</td>
+                            <td>@category.NumberOfImages</td>
+                            <td>@category.HasThumbnail</td>
+                            <td>
+                                @Html.ActionLink("Изтрии", "Delete", "Category", new { id = category.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
                         }
                         <tr>
                             @Html.ActionLink("Добави", "Add", "Category")

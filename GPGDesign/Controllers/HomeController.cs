@@ -40,7 +40,7 @@ namespace GPGDesign.Controllers
             var allCategories = new List<CategoryViewModel>();
             foreach (var item in category)
             {
-                var catItem = new CategoryViewModel() { EnName = item.EnName, DeName = item.DeName, BgName = item.BgName, EnDescription = item.EnDescription, DeDescription = item.DeDescription, BgDescription = item.BgDescription, Thumbnail = ByteArrayToBase64(item.Thumbnail, "data:image/png;base64") };
+                var catItem = new CategoryViewModel() {Id = item.Id, EnName = item.EnName, DeName = item.DeName, BgName = item.BgName, EnDescription = item.EnDescription, DeDescription = item.DeDescription, BgDescription = item.BgDescription, Thumbnail = ByteArrayToBase64(item.Thumbnail, "data:image/png;base64") };
                 allCategories.Add(catItem);
             }
             

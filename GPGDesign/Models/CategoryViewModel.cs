@@ -33,5 +33,7 @@ namespace GPGDesign.Models
         public string Thumbnail { get; set; }
 
         public int NumberOfImages { get; set; }
+
+        public string HasThumbnail { get; set; }        
     }
 }
