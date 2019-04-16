@@ -71,17 +71,17 @@
                             @Html.ActionLink("Logout", "Logout", new { controller = "Account" }, new { @class = "mn-has-sub" })
                         </li>
                     }
-                    <li>
-                        <a href="#" class="mn-has-sub">@requestCulture.RequestCulture.UICulture.Name <i class="fa fa-angle-down"></i></a>
-                        
-                        <form asp-controller="Language" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" method="post">
+                        <li>
+                            <a href="#" class="mn-has-sub">@requestCulture.RequestCulture.UICulture.Name <i class="fa fa-angle-down"></i></a>
+                            <ul class="mn-sub">
 
-                            <select class="mn-sub" style="background-color: white;" name="culture" onchange="this.form.submit();"
-                                    asp-for="@requestCulture.RequestCulture.UICulture.Name"
-                                    asp-items="cultureItems"></select>
+                                @foreach (var item in cultureItems)
+                                {                                    
+                                    <li>@Html.ActionLink((string)item.Text, "SetLanguage", "Language", new { culture = (string)item.Value, returnUrl = Context.Request.Path }, null)</li>
+                                }                                
 
-                        </form>
-                    </li>
+                            </ul>                            
+                        </li>
                 </ul>
             </div>
             <!-- End Main Menu -->

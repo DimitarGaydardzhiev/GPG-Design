@@ -13,9 +13,9 @@ namespace GPGDesign.Controllers
         public IActionResult Index()
         {
             return View();
-        }       
+        }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult SetLanguage(string culture, string returnUrl)
         {
             Response.Cookies.Append(
