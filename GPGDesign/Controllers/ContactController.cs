@@ -4,14 +4,17 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using GPGDesign.Models.ContactModels;
 using Microsoft.Extensions.Localization;
+using GPGDesign.Utils;
+using GPGDesign.Enums;
+using NToastNotify;
 
 namespace GPGDesign.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : BaseController
     {
         private readonly IStringLocalizer<ContactController> _localizer;
 
-        public ContactController(IStringLocalizer<ContactController> localizer)
+        public ContactController(IStringLocalizer<ContactController> localizer, IToastNotification toastNotification) : base(toastNotification)
         {
             _localizer = localizer;
         }
@@ -59,7 +62,7 @@ namespace GPGDesign.Controllers
                 {
                     smtp.Send(message);
                     Response.Redirect("/Home");
-
+                    ShowNotification(_localizer["SuccessSend"], ToastrSeverity.Success);
                 }
             }
         }

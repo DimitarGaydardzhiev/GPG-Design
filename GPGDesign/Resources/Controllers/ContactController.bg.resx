@@ -123,4 +123,7 @@
   <data name="ContactTxt" xml:space="preserve">
     <value>Моля свържете се с нас, като ползвате формата по-долу!</value>
   </data>
+  <data name="SuccessSend" xml:space="preserve">
+    <value>Имейлът Ви беше изпратен успешно!</value>
+  </data>
 </root>

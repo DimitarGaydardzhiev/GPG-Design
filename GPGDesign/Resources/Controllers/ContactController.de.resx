@@ -123,4 +123,7 @@
   <data name="ContactTxt" xml:space="preserve">
     <value>ALABALA</value>
   </data>
+  <data name="SuccessSend" xml:space="preserve">
+    <value>Ihre E-Mail wurde erfolgreich versendet!</value>
+  </data>
 </root>
