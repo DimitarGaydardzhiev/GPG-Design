@@ -12,5 +12,8 @@ namespace GPGDesign.Models
 
         [Display(Name = "Select")]
         public bool IsSelected { get; set; }
+
+        [Display(Name = "Покажи на главната страница")]
+        public bool ShowOnMainPage { get; set; }
     }
 }

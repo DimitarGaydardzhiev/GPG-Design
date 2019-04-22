@@ -1,0 +1,54 @@
+﻿@model List<GPGDesign.Models.ImageViewModel>
+<!-- Page Loader -->
+<div class="page-loader">
+    <div class="loader">Loading...</div>
+</div>
+<!-- End Page Loader -->
+
+<div class="page" id="top">
+    <section class="small-section bg-dark-lighter">
+        <div class="relative container align-left">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Промяна на снимките на началния екран</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Head Section -->
+    <!-- Section -->
+    <section class="page-section">
+        <div class="container relative">
+            <!-- Photo Grid -->
+            <!-- Photo Item -->
+            <div class="row multi-columns-row mb-30 mb-xs-10">
+                @using (Html.BeginForm("SaveMainPageImages", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        <div class="col-md-3 col-lg-3 mb-md-10">
+                            <div class="post-prev-img">
+                                <a href=@Model[i].Src class="lightbox-gallery-2 mfp-image"><img src=@Model[i].Src alt="" /></a>
+                                @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
+                                {
+                                    <div class="funkyradio">
+                                        <div class="funkyradio-success">
+                                            @Html.HiddenFor(m => Model[i].Id)
+                                            @Html.CheckBoxFor(m => Model[i].ShowOnMainPage)
+                                            @Html.LabelFor(m => Model[i].ShowOnMainPage)
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    <div class="col-md-12">
+                        <button class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Save</button>
+                    </div>
+                }
+            </div>
+            <!-- End Photo Item -->
+        </div>
+        <!-- End Photo Grid -->
+    </section>
+</div>
