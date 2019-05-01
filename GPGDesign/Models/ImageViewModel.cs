@@ -15,5 +15,7 @@ namespace GPGDesign.Models
 
         [Display(Name = "Покажи на главната страница")]
         public bool ShowOnMainPage { get; set; }
+
+        public int CategoryId { get; set; }
     }
 }

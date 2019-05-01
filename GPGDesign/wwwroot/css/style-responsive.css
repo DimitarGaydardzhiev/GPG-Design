@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*------------------------------------------------------------------
 [Responsive Stylesheet]
 
@@ -130,7 +130,7 @@ Primary use:    MultiPurpose Template
     }
 
     .page-section{
-        padding: 120px 0;
+        padding: 70px 0;
         
     }
     .page-section, .home-section, .small-section{

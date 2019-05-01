@@ -64,9 +64,9 @@
                     </li>
                     @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
                     {
-                        <li>
+                        @*<li>
                             <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Registration", "Register", "Account")</a>
-                        </li>
+                        </li>*@
                         <li>
                             @Html.ActionLink("Logout", "Logout", new { controller = "Account" }, new { @class = "mn-has-sub" })
                         </li>

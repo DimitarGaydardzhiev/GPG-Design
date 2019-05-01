@@ -1,7 +1,10 @@
-﻿using GPGDesign.Enums;
+﻿using DbEntities.Models;
+using GPGDesign.Enums;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using System;
+using System.Globalization;
+using System.Threading;
 
 namespace GPGDesign.Controllers
 {
@@ -51,6 +54,26 @@ namespace GPGDesign.Controllers
         protected byte[] Base64ToByteArray(string image)
         {
             return !string.IsNullOrEmpty(image) ? Convert.FromBase64String(image.Split(',')[1]) : null;
+        }
+
+        protected string GetCategoryDescription(Category category)
+        {
+            var result = string.Empty;
+
+            if (Thread.CurrentThread.CurrentCulture.Name.Equals("en"))
+            {
+                result = category.EnDescription;
+            }
+            else if (Thread.CurrentThread.CurrentCulture.Name.Equals("de"))
+            {
+                result = category.DeDescription;
+            }
+            else
+            {
+                result = category.BgDescription;
+            }
+
+            return result;
         }
     }
 }

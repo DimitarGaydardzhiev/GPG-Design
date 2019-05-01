@@ -508,10 +508,13 @@ function initPageSliders(){
         
         // Fullwidth slider
         $(".fullwidth-slider").owlCarousel({
-            slideSpeed: 350,
+            transitionStyle: "fade",
+            autoPlay: 4000,
+            slideSpeed: 700,
             singleItem: true,
             autoHeight: true,
             navigation: true,
+            pagination: true,
             navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"]
         });
         

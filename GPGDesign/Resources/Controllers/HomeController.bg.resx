@@ -117,10 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutUsIntro" xml:space="preserve">
+    <value>Фирмата е създадена през 1993г. с предмет на дейност рекламни услуги. Първоначалната ориентация е изработка на произведения на изкуството и външна реклама.</value>
+  </data>
+  <data name="AboutUsLabel" xml:space="preserve">
+    <value>За Нас</value>
+  </data>
+  <data name="AboutUsNext" xml:space="preserve">
+    <value>В последствие дейността се разширява и се формират различни звена: печатна, транспортна, медийна, web design, както и рекламни концепции и маркетингови стратегии.</value>
+  </data>
+  <data name="Discuss" xml:space="preserve">
+    <value>Планиране</value>
+  </data>
   <data name="HomeMainLbl" xml:space="preserve">
     <value>Ние сме просто креативни хора</value>
   </data>
   <data name="HomeWeOffer" xml:space="preserve">
     <value>Ние предлагаме</value>
+  </data>
+  <data name="Make" xml:space="preserve">
+    <value>Изработка</value>
+  </data>
+  <data name="Philosophy" xml:space="preserve">
+    <value>Ръководството на GPG Design заедно с всички свой служители гарантира качеството на своите продукти и завършени монтажи, в съответствие с всички изисквания. Стремежа към все по-качествени продукти е нашата основна цел.</value>
+  </data>
+  <data name="PhilosophyLabel" xml:space="preserve">
+    <value>Философия</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Резултат</value>
   </data>
 </root>
