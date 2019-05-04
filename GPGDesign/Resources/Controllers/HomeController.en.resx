@@ -126,11 +126,20 @@
   <data name="AboutUsNext" xml:space="preserve">
     <value>Subsequently, the activity expands and various units are formed: printing, transport, media, web design, as well as advertising concepts and marketing strategies.</value>
   </data>
+  <data name="ContactUsNavLabel" xml:space="preserve">
+    <value>Contact us</value>
+  </data>
   <data name="Discuss" xml:space="preserve">
     <value>Discuss</value>
   </data>
+  <data name="GalleryNavLabel" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
   <data name="HomeMainLbl" xml:space="preserve">
     <value>We Are just crative people</value>
+  </data>
+  <data name="HomeNavLabel" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="HomeWeOffer" xml:space="preserve">
     <value>We offer you</value>
@@ -146,5 +155,8 @@
   </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
+  </data>
+  <data name="SeeMoreLabel" xml:space="preserve">
+    <value>See more</value>
   </data>
 </root>

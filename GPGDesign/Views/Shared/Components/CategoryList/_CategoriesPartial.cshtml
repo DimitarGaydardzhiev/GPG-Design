@@ -1,12 +1,28 @@
 ﻿@model IEnumerable<CategoryViewModel>
+@using System.Globalization
+
+@{
+    var culture = CultureInfo.CurrentCulture.Name;
+}
 
 <li>
-    <a href="#" class="mn-has-sub">Gallery <i class="fa fa-angle-down"></i></a>
+    <a href="#" class="mn-has-sub">@ViewData["GalleryNavLabel"] <i class="fa fa-angle-down"></i></a>
 
     <ul class="mn-sub">
         @foreach (var item in Model)
         {
-            <li>@Html.ActionLink((string)item.EnName, "GetById", "Category", new { id = item.Id })</li>
+            @if (culture == "en")
+            {
+                <li>@Html.ActionLink((string)item.EnName, "GetById", "Category", new { id = item.Id })</li>
+            }
+            else if (culture == "de")
+            {
+                <li>@Html.ActionLink((string)item.DeName ?? (string)item.EnName, "GetById", "Category", new { id = item.Id })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink((string)item.BgName ?? (string)item.EnName, "GetById", "Category", new { id = item.Id })</li>
+            }
         }
         @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
         {

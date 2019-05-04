@@ -30,7 +30,9 @@ namespace GPGDesign.Components
                 .Select(c => new CategoryViewModel()
                 {
                     Id = c.Id,
-                    EnName = c.EnName
+                    EnName = c.EnName,
+                    BgName = c.BgName,
+                    DeName = c.DeName
                 })
                 .ToList();
 

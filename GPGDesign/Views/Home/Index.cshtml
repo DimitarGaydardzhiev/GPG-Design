@@ -53,7 +53,7 @@
                                 }
                             </h4>
                             <div class="local-scroll">
-                                @Html.ActionLink("See More", "GetById", "Category", new { id = image.CategoryId }, new { @class = "btn btn-mod btn-border-w btn-medium btn-round hidden-x" })
+                                @Html.ActionLink(@ViewData["SeeMoreLabel"].ToString(), "GetById", "Category", new { id = image.CategoryId }, new { @class = "btn btn-mod btn-border-w btn-medium btn-round hidden-x" })
                             </div>
                         </div>
                     </div>

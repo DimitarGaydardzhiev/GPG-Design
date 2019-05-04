@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CarouselLabel" xml:space="preserve">
+    <value>Wir sind einfach kreative Menschen</value>
+  </data>
+  <data name="ContactUsNavLabel" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="GalleryNavLabel" xml:space="preserve">
+    <value>Galerie</value>
+  </data>
   <data name="HomeMainLbl" xml:space="preserve">
-    <value>We Are just crative people</value>
+    <value>Wir sind einfach kreative Menschen</value>
+  </data>
+  <data name="HomeNavLabel" xml:space="preserve">
+    <value>Nach hause</value>
   </data>
   <data name="HomeWeOffer" xml:space="preserve">
     <value>Wir bieten dir</value>
+  </data>
+  <data name="SeeMoreLabel" xml:space="preserve">
+    <value>Mehr sehen</value>
   </data>
 </root>
