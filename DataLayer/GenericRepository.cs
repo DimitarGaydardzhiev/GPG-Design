@@ -66,6 +66,15 @@ namespace DataLayer
 
         public int Save(T entity)
         {
+            if (entity.Id != 0)
+            {
+                this.ChangeState(entity, EntityState.Modified);
+            }
+            else
+            {
+                this.set.Add(entity);
+            }
+
             this.context.SaveChanges();
             return entity.Id;
         }

@@ -63,14 +63,6 @@
     </div>
     <!-- End Fullwidth Slider -->
 
-    <form asp-controller="Language" asp-action="SetLanguage" style="margin-top:20px;"
-          asp-route-returnUrl="@Context.Request.Path"
-          method="post" class="form-horizontal">
-        <select name="culture" onchange="this.form.submit();"
-                asp-for="@requestCulture.RequestCulture.UICulture.Name"
-                asp-items="cultureItems"></select>
-    </form>
-
     <!-- About Section -->
     <section class="page-section" id="about">
         <div class="container relative">

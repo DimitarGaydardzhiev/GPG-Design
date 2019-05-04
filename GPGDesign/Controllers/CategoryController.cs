@@ -33,8 +33,33 @@ namespace GPGDesign.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult Add()
+        public IActionResult Add(int? id)
         {
+            if (id.HasValue)
+            {
+                var category = this.categoryRepository.All()
+                    .FirstOrDefault(c => c.Id == id);
+
+                if (category == null)
+                {
+                    ShowNotification(Messages.ObjectNotFound, ToastrSeverity.Error);
+                    return View();
+                }
+
+                var viewModel = new CategoryViewModel()
+                {
+                    EnName = category.EnName,
+                    DeName = category.DeName,
+                    BgName = category.BgName,
+                    EnDescription = category.EnDescription,
+                    DeDescription = category.DeDescription,
+                    BgDescription = category.BgDescription,
+                    Thumbnail = ByteArrayToBase64(category.Thumbnail, "jpeg")
+                };
+
+                return View(viewModel);
+            }
+
             return View();
         }
 
@@ -45,23 +70,23 @@ namespace GPGDesign.Controllers
             //if (!ModelState.IsValid)
             //    return View(model);
 
-            if (this.categoryRepository.All().Any(c => c.EnName == model.EnName))
-            {
-                ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
-                return View();
-            }
+            //if (this.categoryRepository.All().Any(c => c.EnName == model.EnName))
+            //{
+            //    ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
+            //    return View();
+            //}
 
-            if (this.categoryRepository.All().Any(c => c.DeName == model.DeName))
-            {
-                ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
-                return View();
-            }
+            //if (this.categoryRepository.All().Any(c => c.DeName == model.DeName))
+            //{
+            //    ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
+            //    return View();
+            //}
 
-            if (this.categoryRepository.All().Any(c => c.BgName == model.BgName))
-            {
-                ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
-                return View();
-            }
+            //if (this.categoryRepository.All().Any(c => c.BgName == model.BgName))
+            //{
+            //    ShowNotification(Messages.ObjectAlreadyExists, ToastrSeverity.Error);
+            //    return View();
+            //}
 
             string img = string.Empty;
 
@@ -74,22 +99,19 @@ namespace GPGDesign.Controllers
                 }
             }
 
+            var category = this.categoryRepository.FindOrCreate(model.Id);
 
-            this.categoryRepository.Add(new Category()
-            {
-                EnName = model.EnName,
-                DeName = model.DeName,
-                BgName = model.BgName,
-                EnDescription = model.EnDescription,
-                DeDescription = model.DeDescription,
-                BgDescription = model.BgDescription,
-                Thumbnail = Base64ToByteArray(img)
-
-            });
+            category.EnName = model.EnName;
+            category.DeName = model.DeName;
+            category.BgName = model.BgName;
+            category.EnDescription = model.EnDescription;
+            category.DeDescription = model.DeDescription;
+            category.BgDescription = model.BgDescription;
+            category.Thumbnail = Base64ToByteArray(img);
 
             try
             {
-                this.categoryRepository.SaveChanges();
+                this.categoryRepository.Save(category);
                 ShowNotification(Messages.SuccessAdd, ToastrSeverity.Success);
             }
             catch (Exception)

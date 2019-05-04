@@ -34,6 +34,7 @@
                             <th scope="col">Брой снимки</th>
                             <th scope="col">Тъмбнейл</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,9 @@
                             <td>@category.HasThumbnail</td>
                             <td>
                                 @Html.ActionLink("Изтрии", "Delete", "Category", new { id = category.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Промени", "Add", "Category", new { id = category.Id }, new { @class = "btn btn-warning" })
                             </td>
                         </tr>
                         }
