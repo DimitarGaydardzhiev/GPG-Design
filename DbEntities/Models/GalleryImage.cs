@@ -8,7 +8,13 @@ namespace DbEntities.Models
         [Key]
         public int Id { get; set; }
         
-        public string Description { get; set; }
+        public string CategoryDescription { get; set; }
+
+        public string EnDescription { get; set; }
+
+        public string DeDescription { get; set; }
+
+        public string BgDescription { get; set; }
 
         public byte[] Image { get; set; }
 

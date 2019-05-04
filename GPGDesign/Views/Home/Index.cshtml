@@ -38,9 +38,20 @@
                             <h1 class="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
                                 @ViewData["HomeMainLbl"]
                             </h1>
-                            <h2 class="hs-line-14 font-alt mb-50 mb-xs-30">
-                                @image.Description
-                            </h2>
+                            <h4 class="font-alt mb-50 mb-xs-30">
+                                @if (culture == "en")
+                                {
+                                    @image.EnDescription
+                                }
+                                else if (culture == "de")
+                                {
+                                    @image.DeDescription
+                                }
+                                else
+                                {
+                                    @image.BgDescription
+                                }
+                            </h4>
                             <div class="local-scroll">
                                 @Html.ActionLink("See More", "GetById", "Category", new { id = image.CategoryId }, new { @class = "btn btn-mod btn-border-w btn-medium btn-round hidden-x" })
                             </div>

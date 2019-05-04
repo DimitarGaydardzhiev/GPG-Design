@@ -11,9 +11,10 @@ using System;
 namespace DbEntities.Migrations
 {
     [DbContext(typeof(GPGContext))]
-    partial class GPGContextModelSnapshot : ModelSnapshot
+    [Migration("20190504052206_ImageDescriptionsAdded")]
+    partial class ImageDescriptionsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

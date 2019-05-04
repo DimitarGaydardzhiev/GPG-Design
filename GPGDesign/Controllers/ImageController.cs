@@ -34,7 +34,10 @@ namespace GPGDesign.Controllers
                 {
                     Src = ByteArrayToBase64(i.Image, "data:image/png;base64"),
                     Id = i.Id,
-                    ShowOnMainPage = i.ShowOnMainPage
+                    ShowOnMainPage = i.ShowOnMainPage,
+                    EnDescription = i.EnDescription,
+                    BgDescription = i.BgDescription,
+                    DeDescription = i.DeDescription
                 }).ToList();
 
             return View(result);
@@ -50,6 +53,9 @@ namespace GPGDesign.Controllers
                 {
                     var galleryImage = this.imageRepository.Find(image.Id);
                     galleryImage.ShowOnMainPage = image.ShowOnMainPage;
+                    galleryImage.EnDescription = image.EnDescription;
+                    galleryImage.BgDescription = image.BgDescription;
+                    galleryImage.DeDescription = image.DeDescription;
                     this.imageRepository.Update(galleryImage);
                 }
 

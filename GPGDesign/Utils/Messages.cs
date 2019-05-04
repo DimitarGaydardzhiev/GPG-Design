@@ -10,6 +10,7 @@
         public const string ImageUploadSuccess = "Files uploaded successfully";
         public const string UnsupportedImageType = "Some of the files is not a valid image type";
         public const string DeleteError = "Delete can not be completed";
+        public const string AddError = "Add can not be completed";
         public const string NoItems = "No Items Added Yet";
     }
 }

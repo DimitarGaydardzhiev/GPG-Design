@@ -67,7 +67,10 @@ namespace GPGDesign.Controllers
                 {
                     Src = ByteArrayToBase64(i.Image, "data:image/png;base64"),
                     CategoryId = i.CategoryId,
-                    Description = GetCategoryDescription(i.Category)
+                    EnDescription = i.EnDescription,
+                    DeDescription = i.DeDescription,
+                    BgDescription = i .BgDescription,
+                    // CategoryDescription = GetCategoryDescription(i.Category)
                 });
 
             return result;

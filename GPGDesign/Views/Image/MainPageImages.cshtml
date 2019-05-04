@@ -10,7 +10,7 @@
         <div class="relative container align-left">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Промяна на снимките на началния екран</h1>
+                    <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Настройки снимки</h1>
                 </div>
             </div>
         </div>
@@ -38,12 +38,24 @@
                                             @Html.LabelFor(m => Model[i].ShowOnMainPage)
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(m => Model[i].EnDescription, new { @class = "input-md round form-control", placeholder = "Описание на английски", id = "enDescription", rows = "3" })
+                                        @Html.ValidationMessageFor(m => Model[i].EnDescription, String.Empty, new { @style = "color:red;!important" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(m => Model[i].BgDescription, new { @class = "input-md round form-control", placeholder = "Описание на български", id = "enDescription", rows = "3" })
+                                        @Html.ValidationMessageFor(m => Model[i].BgDescription, String.Empty, new { @style = "color:red;!important" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.TextAreaFor(m => Model[i].DeDescription, new { @class = "input-md round form-control", placeholder = "Описание на немски", id = "enDescription", rows = "3" })
+                                        @Html.ValidationMessageFor(m => Model[i].DeDescription, String.Empty, new { @style = "color:red;!important" })
+                                    </div>
                                 }
                             </div>
                         </div>
                     }
                     <div class="col-md-12">
-                        <button class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Save</button>
+                        <button class="submit_btn btn btn-mod btn-medium btn-round" id="login-btn">Запиши</button>
                     </div>
                 }
             </div>

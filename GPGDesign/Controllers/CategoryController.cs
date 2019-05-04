@@ -87,8 +87,17 @@ namespace GPGDesign.Controllers
 
             });
 
-            this.categoryRepository.SaveChanges();
-            ShowNotification(Messages.SuccessAdd, ToastrSeverity.Success);
+            try
+            {
+                this.categoryRepository.SaveChanges();
+                ShowNotification(Messages.SuccessAdd, ToastrSeverity.Success);
+            }
+            catch (Exception)
+            {
+                string error = string.Join(Environment.NewLine, ModelState.SelectMany(e => e.Value.Errors.Select(er => er.ErrorMessage)));
+                ShowNotification(error, ToastrSeverity.Error);
+            }
+
             return View();
         }
 
@@ -159,7 +168,9 @@ namespace GPGDesign.Controllers
                 images.Add(new ImageViewModel()
                 {
                     Id = item.Id,
-                    Description = item.Description,
+                    EnDescription = item.EnDescription,
+                    BgDescription = item.BgDescription,
+                    DeDescription = item.DeDescription,
                     Src = ByteArrayToBase64(item.Image, "data:image/png;base64")
                 });
             }

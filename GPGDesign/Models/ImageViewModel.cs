@@ -8,7 +8,13 @@ namespace GPGDesign.Models
 
         public string Src { get; set; }
 
-        public string Description { get; set; }
+        public string CategoryDescription { get; set; }
+
+        public string EnDescription { get; set; }
+
+        public string DeDescription { get; set; }
+
+        public string BgDescription { get; set; }
 
         [Display(Name = "Select")]
         public bool IsSelected { get; set; }

@@ -10,8 +10,8 @@
         }
         @if (!string.IsNullOrEmpty(Context.User.Identity.Name))
         {
-            <li>@Html.ActionLink("Всички категории", "All", "Category")</li>
-            <li>@Html.ActionLink("Снимки начална страница", "MainPageImages", "Image")</li>
+            <li>@Html.ActionLink("Настройки категории", "All", "Category")</li>
+            <li>@Html.ActionLink("Настройки снимки", "MainPageImages", "Image")</li>
         }
     </ul>
 </li>
