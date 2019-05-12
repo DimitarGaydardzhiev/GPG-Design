@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using NToastNotify;
 using System;
 using System.Collections.Generic;
@@ -20,15 +21,18 @@ namespace GPGDesign.Controllers
     {
         private readonly IRepository<Category> categoryRepository;
         private readonly IRepository<GalleryImage> galleryImageRepository;
+        private readonly IStringLocalizer<HomeController> _localizer;
 
         public CategoryController(
             IRepository<Category> categoryRepository,
             IToastNotification toastNotification,
-            IRepository<GalleryImage> galleryImageRepository)
+            IRepository<GalleryImage> galleryImageRepository,
+            IStringLocalizer<HomeController> localizer)
             : base(toastNotification)
         {
             this.categoryRepository = categoryRepository;
             this.galleryImageRepository = galleryImageRepository;
+            _localizer = localizer;
         }
 
         [HttpGet]
@@ -174,6 +178,10 @@ namespace GPGDesign.Controllers
         [HttpGet]
         public IActionResult GetById(int id)
         {
+            ViewData["HomeNavLabel"] = _localizer["HomeNavLabel"];
+            ViewData["ContactUsNavLabel"] = _localizer["ContactUsNavLabel"];
+            ViewData["GalleryNavLabel"] = _localizer["GalleryNavLabel"];
+
             var category = categoryRepository.All()
                 .Include(c => c.Images)
                 .FirstOrDefault(c => c.Id == id);
@@ -200,6 +208,8 @@ namespace GPGDesign.Controllers
             var result = new CategoryViewModel()
             {
                 EnName = category.EnName,
+                BgName = category.BgName,
+                DeName = category.DeName,
                 Images = images
             };
 

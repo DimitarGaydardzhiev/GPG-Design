@@ -13,16 +13,21 @@ namespace GPGDesign.Controllers
     public class ContactController : BaseController
     {
         private readonly IStringLocalizer<ContactController> _localizer;
+        private readonly IStringLocalizer<HomeController> _homeLocalizer;
 
-        public ContactController(IStringLocalizer<ContactController> localizer, IToastNotification toastNotification) : base(toastNotification)
+        public ContactController(IStringLocalizer<ContactController> localizer, IToastNotification toastNotification, IStringLocalizer<HomeController> homeLocalizer) : base(toastNotification)
         {
             _localizer = localizer;
+            _homeLocalizer = homeLocalizer;
         }
 
         public ActionResult Contact()
         {
             ViewData["ContactLbl"] = _localizer["ContactLbl"];            
             ViewData["ContactTxt"] = _localizer["ContactTxt"];
+            ViewData["HomeNavLabel"] = _homeLocalizer["HomeNavLabel"];
+            ViewData["ContactUsNavLabel"] = _homeLocalizer["ContactUsNavLabel"];
+            ViewData["GalleryNavLabel"] = _homeLocalizer["GalleryNavLabel"];
 
             return View(new EmailFormModel());
         }
