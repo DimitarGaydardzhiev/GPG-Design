@@ -1,9 +1,9 @@
 ﻿using DbEntities.Models;
 using GPGDesign.Enums;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using NToastNotify;
 using System;
-using System.Globalization;
 using System.Threading;
 
 namespace GPGDesign.Controllers
@@ -11,10 +11,12 @@ namespace GPGDesign.Controllers
     public abstract class BaseController : Controller
     {
         private readonly IToastNotification toastNotification;
+        private readonly IStringLocalizer<HomeController> _localizer;
 
-        public BaseController(IToastNotification toastNotification)
+        public BaseController(IToastNotification toastNotification, IStringLocalizer<HomeController> homeLocalizer)
         {
             this.toastNotification = toastNotification;
+            _localizer = homeLocalizer;
         }
 
         protected void ShowNotification(string message, ToastrSeverity severity)
@@ -74,6 +76,12 @@ namespace GPGDesign.Controllers
             }
 
             return result;
+        }
+
+        protected void InitNavLabels()
+        {
+            ViewData["HomeNavLabel"] = _localizer["HomeNavLabel"];
+            ViewData["ContactUsNavLabel"] = _localizer["ContactUsNavLabel"];
         }
     }
 }

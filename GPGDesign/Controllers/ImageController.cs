@@ -5,7 +5,7 @@ using GPGDesign.Models;
 using GPGDesign.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using NToastNotify;
 using System;
 using System.Collections.Generic;
@@ -16,19 +16,24 @@ namespace GPGDesign.Controllers
     public class ImageController : BaseController
     {
         private readonly IRepository<GalleryImage> imageRepository;
+        IStringLocalizer<HomeController> _localizer;
 
         public ImageController(
             IToastNotification toastNotification,
-            IRepository<GalleryImage> categoryRepository)
-            : base(toastNotification)
+            IRepository<GalleryImage> categoryRepository,
+            IStringLocalizer<HomeController> homeLocalizer)
+            : base(toastNotification, homeLocalizer)
         {
             this.imageRepository = categoryRepository;
+            _localizer = homeLocalizer;
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize]
         public IActionResult MainPageImages()
         {
+            base.InitNavLabels();
+
             var result = this.imageRepository.All()
                 .Select(i => new ImageViewModel()
                 {
@@ -43,8 +48,8 @@ namespace GPGDesign.Controllers
             return View(result);
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public IActionResult SaveMainPageImages(IEnumerable<ImageViewModel> images)
         {
             try

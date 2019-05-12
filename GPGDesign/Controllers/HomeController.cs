@@ -20,14 +20,16 @@ namespace GPGDesign.Controllers
         private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<GalleryImage> _galleryImageRepository;
 
-        public HomeController(IStringLocalizer<HomeController> localizer, IRepository<Category> categoryRepository, IToastNotification toastNotification, IRepository<GalleryImage> galleryImageRepository) : base(toastNotification)
+        public HomeController(IStringLocalizer<HomeController> homeLocalizer, IRepository<Category> categoryRepository, IToastNotification toastNotification, IRepository<GalleryImage> galleryImageRepository) 
+            : base(toastNotification, homeLocalizer)
         {
-            _localizer = localizer;
+            _localizer = homeLocalizer;
             _categoryRepository = categoryRepository;
             _galleryImageRepository = galleryImageRepository;
         }
         public IActionResult Index()
         {
+            base.InitNavLabels();
             ViewData["HomeMainLbl"] = _localizer["HomeMainLbl"];
             ViewData["HomeWeOffer"] = _localizer["HomeWeOffer"];
             ViewData["AboutUsIntro"] = _localizer["AboutUsIntro"];
@@ -38,8 +40,6 @@ namespace GPGDesign.Controllers
             ViewData["Discuss"] = _localizer["Discuss"];
             ViewData["Make"] = _localizer["Make"];
             ViewData["Product"] = _localizer["Product"];
-            ViewData["HomeNavLabel"] = _localizer["HomeNavLabel"];
-            ViewData["ContactUsNavLabel"] = _localizer["ContactUsNavLabel"];
             ViewData["GalleryNavLabel"] = _localizer["GalleryNavLabel"];
             ViewData["SeeMoreLabel"] = _localizer["SeeMoreLabel"];
             ViewData["MainImages"] = this.GetMainPageImages();

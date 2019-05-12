@@ -27,18 +27,19 @@ namespace GPGDesign.Controllers
             IRepository<Category> categoryRepository,
             IToastNotification toastNotification,
             IRepository<GalleryImage> galleryImageRepository,
-            IStringLocalizer<HomeController> localizer)
-            : base(toastNotification)
+            IStringLocalizer<HomeController> homeLocalizer)
+            : base(toastNotification, homeLocalizer)
         {
             this.categoryRepository = categoryRepository;
             this.galleryImageRepository = galleryImageRepository;
-            _localizer = localizer;
+            _localizer = homeLocalizer;
         }
 
         [HttpGet]
         [Authorize]
         public IActionResult Add(int? id)
         {
+            base.InitNavLabels();
             if (id.HasValue)
             {
                 var category = this.categoryRepository.All()
@@ -131,6 +132,8 @@ namespace GPGDesign.Controllers
         [Authorize]
         public IActionResult All()
         {
+            base.InitNavLabels();
+
             var categories = categoryRepository.All()
                 .Include(c => c.Images);
 
@@ -178,8 +181,7 @@ namespace GPGDesign.Controllers
         [HttpGet]
         public IActionResult GetById(int id)
         {
-            ViewData["HomeNavLabel"] = _localizer["HomeNavLabel"];
-            ViewData["ContactUsNavLabel"] = _localizer["ContactUsNavLabel"];
+            base.InitNavLabels();
             ViewData["GalleryNavLabel"] = _localizer["GalleryNavLabel"];
 
             var category = categoryRepository.All()

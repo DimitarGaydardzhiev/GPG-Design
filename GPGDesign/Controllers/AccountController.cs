@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using NToastNotify;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -14,23 +16,30 @@ namespace GPGDesign.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private readonly IToastNotification _toastNotification;
+        private readonly IStringLocalizer<HomeController> _localizer;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IToastNotification toastNotification,
+            IStringLocalizer<HomeController> homeLocalizer)
+             : base(toastNotification, homeLocalizer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _toastNotification = toastNotification;
+            _localizer = homeLocalizer;
         }
 
         [TempData]
@@ -44,6 +53,8 @@ namespace GPGDesign.Controllers
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
+            base.InitNavLabels();
+
             return View();
         }
 

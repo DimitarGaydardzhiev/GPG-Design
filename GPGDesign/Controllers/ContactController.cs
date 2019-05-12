@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GPGDesign.Enums;
+using GPGDesign.Models.ContactModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
+using NToastNotify;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
-using GPGDesign.Models.ContactModels;
-using Microsoft.Extensions.Localization;
-using GPGDesign.Utils;
-using GPGDesign.Enums;
-using NToastNotify;
 
 namespace GPGDesign.Controllers
 {
@@ -15,7 +13,8 @@ namespace GPGDesign.Controllers
         private readonly IStringLocalizer<ContactController> _localizer;
         private readonly IStringLocalizer<HomeController> _homeLocalizer;
 
-        public ContactController(IStringLocalizer<ContactController> localizer, IToastNotification toastNotification, IStringLocalizer<HomeController> homeLocalizer) : base(toastNotification)
+        public ContactController(IStringLocalizer<ContactController> localizer, IToastNotification toastNotification, IStringLocalizer<HomeController> homeLocalizer) 
+            : base(toastNotification, homeLocalizer)
         {
             _localizer = localizer;
             _homeLocalizer = homeLocalizer;
@@ -23,10 +22,9 @@ namespace GPGDesign.Controllers
 
         public ActionResult Contact()
         {
+            base.InitNavLabels();
             ViewData["ContactLbl"] = _localizer["ContactLbl"];            
             ViewData["ContactTxt"] = _localizer["ContactTxt"];
-            ViewData["HomeNavLabel"] = _homeLocalizer["HomeNavLabel"];
-            ViewData["ContactUsNavLabel"] = _homeLocalizer["ContactUsNavLabel"];
             ViewData["GalleryNavLabel"] = _homeLocalizer["GalleryNavLabel"];
 
             return View(new EmailFormModel());
