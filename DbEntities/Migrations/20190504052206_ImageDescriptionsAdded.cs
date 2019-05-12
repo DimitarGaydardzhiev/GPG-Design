@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace DbEntities.Migrations
 {
@@ -27,6 +28,9 @@ namespace DbEntities.Migrations
                 name: "DeDescription",
                 table: "GalleryImage",
                 nullable: true);
+
+            string categoriesCommand = File.ReadAllText("..\\DbEntities\\Seed\\CategoriesSeed.sql");
+            migrationBuilder.Sql(categoriesCommand);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
