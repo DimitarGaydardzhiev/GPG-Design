@@ -40,7 +40,6 @@ namespace GPGDesign.Controllers
             ViewData["Discuss"] = _localizer["Discuss"];
             ViewData["Make"] = _localizer["Make"];
             ViewData["Product"] = _localizer["Product"];
-            ViewData["GalleryNavLabel"] = _localizer["GalleryNavLabel"];
             ViewData["SeeMoreLabel"] = _localizer["SeeMoreLabel"];
             ViewData["MainImages"] = this.GetMainPageImages();
 

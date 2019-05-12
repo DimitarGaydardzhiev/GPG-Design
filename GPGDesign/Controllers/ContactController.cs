@@ -25,7 +25,6 @@ namespace GPGDesign.Controllers
             base.InitNavLabels();
             ViewData["ContactLbl"] = _localizer["ContactLbl"];            
             ViewData["ContactTxt"] = _localizer["ContactTxt"];
-            ViewData["GalleryNavLabel"] = _homeLocalizer["GalleryNavLabel"];
 
             return View(new EmailFormModel());
         }

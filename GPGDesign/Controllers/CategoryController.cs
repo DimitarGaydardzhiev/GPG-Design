@@ -182,7 +182,6 @@ namespace GPGDesign.Controllers
         public IActionResult GetById(int id)
         {
             base.InitNavLabels();
-            ViewData["GalleryNavLabel"] = _localizer["GalleryNavLabel"];
 
             var category = categoryRepository.All()
                 .Include(c => c.Images)

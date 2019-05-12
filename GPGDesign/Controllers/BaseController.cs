@@ -82,6 +82,7 @@ namespace GPGDesign.Controllers
         {
             ViewData["HomeNavLabel"] = _localizer["HomeNavLabel"];
             ViewData["ContactUsNavLabel"] = _localizer["ContactUsNavLabel"];
+            ViewData["GalleryNavLabel"] = _localizer["GalleryNavLabel"];
         }
     }
 }
