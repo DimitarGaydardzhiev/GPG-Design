@@ -54,10 +54,10 @@
                         </li>
                     }
                     <li>
-                        <a href="/" class="mn-has-sub active"><i class="fa"></i>@Html.ActionLink(@ViewData["HomeNavLabel"].ToString(), "Index", "Home")</a>
+                        @Html.ActionLink(@ViewData["HomeNavLabel"].ToString(), "Index", "Home", new { @class = "mn-has-sub active" })
                     </li>
                     <li>
-                        <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink(@ViewData["ContactUsNavLabel"].ToString(), "Contact", "Contact")</a>
+                        @Html.ActionLink(@ViewData["ContactUsNavLabel"].ToString(), "Contact", "Contact", new { @class = "mn-has-sub" })
                     </li>
                     <li>
                         @await Component.InvokeAsync("CategoryList")
