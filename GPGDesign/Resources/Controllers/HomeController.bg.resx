@@ -126,8 +126,23 @@
   <data name="AboutUsNext" xml:space="preserve">
     <value>В последствие дейността се разширява и се формират различни звена: печатна, транспортна, медийна, web design, както и рекламни концепции и маркетингови стратегии.</value>
   </data>
+  <data name="BackLabel" xml:space="preserve">
+    <value>Начало</value>
+  </data>
   <data name="ContactUsNavLabel" xml:space="preserve">
     <value>Контакти</value>
+  </data>
+  <data name="CookieAccept" xml:space="preserve">
+    <value>Приемам</value>
+  </data>
+  <data name="CookieDecline" xml:space="preserve">
+    <value>Отказ</value>
+  </data>
+  <data name="CookieLearnMore" xml:space="preserve">
+    <value>Научете повече</value>
+  </data>
+  <data name="CookieMessage" xml:space="preserve">
+    <value>Този сайт използва бисквитки, за да подобри Вашето сърфиране.</value>
   </data>
   <data name="Discuss" xml:space="preserve">
     <value>Планиране</value>

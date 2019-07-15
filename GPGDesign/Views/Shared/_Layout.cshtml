@@ -92,6 +92,16 @@
 
     <div class="appear-animate">
         @RenderBody()
+        <cookie-consent enabled="true"
+                        compliance-type="opt-out"
+                        cookie-expiry-days="20"
+                        message-text=@ViewData["CookieMessage"]
+                        dismiss-text=@ViewData["CookieAccept"]
+                        allow-text="Allow cookies"
+                        deny-text=@ViewData["CookieDecline"]
+                        link-text=@ViewData["CookieLearnMore"]
+                        link-url="/Home/Cookie">
+        </cookie-consent>
     </div>
 
     <!-- Foter -->

@@ -126,8 +126,23 @@
   <data name="AboutUsNext" xml:space="preserve">
     <value>Subsequently, the activity expands and various units are formed: printing, transport, media, web design, as well as advertising concepts and marketing strategies.</value>
   </data>
+  <data name="BackLabel" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="ContactUsNavLabel" xml:space="preserve">
     <value>Contact us</value>
+  </data>
+  <data name="CookieAccept" xml:space="preserve">
+    <value>Got it!</value>
+  </data>
+  <data name="CookieDecline" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="CookieLearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="CookieMessage" xml:space="preserve">
+    <value>This website uses cookies to ensure you get the best experience on our website.</value>
   </data>
   <data name="Discuss" xml:space="preserve">
     <value>Discuss</value>

@@ -32,7 +32,7 @@ namespace GPGDesign.Controllers
         [Authorize]
         public IActionResult MainPageImages()
         {
-            base.InitNavLabels();
+            base.InitMainLabels();
 
             var result = this.imageRepository.All()
                 .Select(i => new ImageViewModel()

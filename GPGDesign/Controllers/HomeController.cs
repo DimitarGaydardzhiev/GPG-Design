@@ -9,6 +9,7 @@ using Microsoft.Extensions.Localization;
 using NToastNotify;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 
@@ -27,9 +28,10 @@ namespace GPGDesign.Controllers
             _categoryRepository = categoryRepository;
             _galleryImageRepository = galleryImageRepository;
         }
+
         public IActionResult Index()
         {
-            base.InitNavLabels();
+            base.InitMainLabels();
             ViewData["HomeMainLbl"] = _localizer["HomeMainLbl"];
             ViewData["HomeWeOffer"] = _localizer["HomeWeOffer"];
             ViewData["AboutUsIntro"] = _localizer["AboutUsIntro"];
@@ -59,6 +61,13 @@ namespace GPGDesign.Controllers
             }
 
             return View(new ListCategoryViewModel() { AllCategories = allCategories });
+        }
+
+        public IActionResult Cookie()
+        {
+            base.InitMainLabels();
+            ViewBag.CultureName = CultureInfo.CurrentCulture.Name;
+            return View();
         }
 
         private IEnumerable<ImageViewModel> GetMainPageImages()

@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Cookies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .main-nav {
+        display: none !important;
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+@switch (ViewBag.CultureName)
+{
+    case "en":
+        <section id="gdpr" class="contact section_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 gdpr">
+                        <h3>COOKIES</h3>
+                        <br />
+                        <p>
+                            Cookies have small files with information stored in your internet browser (usage data, language, website visits) or hard drive when visiting the site.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </section>
+        break;
+    case "bg":
+        <section id="gdpr" class="contact section_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 gdpr">
+                        <h3>COOKIES (БИСКВИТКИ)</h3>
+                        <br />
+                        <p>
+                            Бисквитките (Cookies) са малки файлове с информация, които се запазват във Вашия интернет браузър (данни за използван език, време на връзка, посетени интернет страници) или твърд диск при посещение на сайта.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </section>
+        break;
+    default:
+        break;
+}
+<div class="row text-center">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+        @Html.ActionLink(@ViewData["BackLabel"].ToString(), "Index", "Home", new { id = "add" }, new { @class = "btn btn-warning" })
+    </div>
+    <div class="col-md-5"></div>
+</div>
+<br />
+
+
+

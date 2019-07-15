@@ -22,7 +22,7 @@ namespace GPGDesign.Controllers
 
         public ActionResult Contact()
         {
-            base.InitNavLabels();
+            base.InitMainLabels();
             ViewData["ContactLbl"] = _localizer["ContactLbl"];            
             ViewData["ContactTxt"] = _localizer["ContactTxt"];
 

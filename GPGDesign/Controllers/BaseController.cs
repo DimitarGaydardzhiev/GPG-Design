@@ -78,11 +78,16 @@ namespace GPGDesign.Controllers
             return result;
         }
 
-        protected void InitNavLabels()
+        protected void InitMainLabels()
         {
             ViewData["HomeNavLabel"] = _localizer["HomeNavLabel"];
             ViewData["ContactUsNavLabel"] = _localizer["ContactUsNavLabel"];
             ViewData["GalleryNavLabel"] = _localizer["GalleryNavLabel"];
+            ViewData["CookieMessage"] = _localizer["CookieMessage"];
+            ViewData["CookieLearnMore"] = _localizer["CookieLearnMore"];
+            ViewData["CookieAccept"] = _localizer["CookieAccept"];
+            ViewData["CookieDecline"] = _localizer["CookieDecline"];
+            ViewData["BackLabel"] = _localizer["BackLabel"];
         }
     }
 }

@@ -39,7 +39,7 @@ namespace GPGDesign.Controllers
         [Authorize]
         public IActionResult Add(int? id)
         {
-            base.InitNavLabels();
+            base.InitMainLabels();
             if (id.HasValue)
             {
                 var category = this.categoryRepository.All()
@@ -132,7 +132,7 @@ namespace GPGDesign.Controllers
         [Authorize]
         public IActionResult All()
         {
-            base.InitNavLabels();
+            base.InitMainLabels();
 
             var categories = categoryRepository.All()
                 .Include(c => c.Images);
@@ -181,7 +181,7 @@ namespace GPGDesign.Controllers
         [HttpGet]
         public IActionResult GetById(int id)
         {
-            base.InitNavLabels();
+            base.InitMainLabels();
 
             var category = categoryRepository.All()
                 .Include(c => c.Images)

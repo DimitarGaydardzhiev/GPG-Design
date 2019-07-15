@@ -53,7 +53,7 @@ namespace GPGDesign.Controllers
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
-            base.InitNavLabels();
+            base.InitMainLabels();
 
             return View();
         }

@@ -7233,3 +7233,11 @@ section:hover .small-item-carousel .owl-next {
 .mt-5 {
     margin-top: 5rem;
 }
+
+.gdpr h3 {
+    text-align: center;
+}
+
+.gdpr ul {
+    list-style-type: disc;
+}
