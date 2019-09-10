@@ -8,7 +8,6 @@ using System.Net.Mail;
 
 namespace GPGDesign.Controllers
 {
-    [Route("")]
     public class ContactController : BaseController
     {
         private readonly IStringLocalizer<ContactController> _localizer;
@@ -20,8 +19,7 @@ namespace GPGDesign.Controllers
             _localizer = localizer;
             _homeLocalizer = homeLocalizer;
         }
-
-        [Route("contacts")]
+        
         public ActionResult Contact()
         {
             base.InitMainLabels();
