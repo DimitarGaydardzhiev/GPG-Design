@@ -11,8 +11,8 @@ using System;
 namespace DbEntities.Migrations
 {
     [DbContext(typeof(GPGContext))]
-    [Migration("20190422193552_ShowOnMainPageForImages")]
-    partial class ShowOnMainPageForImages
+    [Migration("20190910164052_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,20 +26,17 @@ namespace DbEntities.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("BgDescription")
-                        .IsRequired();
+                    b.Property<string>("BgDescription");
 
                     b.Property<string>("BgName")
                         .IsRequired();
 
-                    b.Property<string>("DeDescription")
-                        .IsRequired();
+                    b.Property<string>("DeDescription");
 
                     b.Property<string>("DeName")
                         .IsRequired();
 
-                    b.Property<string>("EnDescription")
-                        .IsRequired();
+                    b.Property<string>("EnDescription");
 
                     b.Property<string>("EnName")
                         .IsRequired();
@@ -56,9 +53,15 @@ namespace DbEntities.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("BgDescription");
+
+                    b.Property<string>("CategoryDescription");
+
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("DeDescription");
+
+                    b.Property<string>("EnDescription");
 
                     b.Property<byte[]>("Image");
 

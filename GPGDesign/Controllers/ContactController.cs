@@ -8,6 +8,7 @@ using System.Net.Mail;
 
 namespace GPGDesign.Controllers
 {
+    [Route("")]
     public class ContactController : BaseController
     {
         private readonly IStringLocalizer<ContactController> _localizer;
@@ -20,6 +21,7 @@ namespace GPGDesign.Controllers
             _homeLocalizer = homeLocalizer;
         }
 
+        [Route("contacts")]
         public ActionResult Contact()
         {
             base.InitMainLabels();
@@ -32,7 +34,7 @@ namespace GPGDesign.Controllers
         [HttpPost]
         public void SendEmail(EmailFormModel model)
         {
-
+            base.InitMainLabels();
             if (ModelState.IsValid)
             {
                 const string fromPassword = "Gpg2018!";

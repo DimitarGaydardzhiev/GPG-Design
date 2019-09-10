@@ -17,6 +17,7 @@ using System.Linq;
 
 namespace GPGDesign.Controllers
 {
+    [Route("category")]
     public class CategoryController : BaseController
     {
         private readonly IRepository<Category> categoryRepository;
@@ -37,6 +38,7 @@ namespace GPGDesign.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("add")]
         public IActionResult Add(int? id)
         {
             base.InitMainLabels();
@@ -70,6 +72,7 @@ namespace GPGDesign.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route("add")]
         public IActionResult Add(CategoryViewModel model, IFormFile file)
         {
             //if (!ModelState.IsValid)
@@ -93,6 +96,7 @@ namespace GPGDesign.Controllers
             //    return View();
             //}
 
+            base.InitMainLabels();
             string img = string.Empty;
 
             if (file != null && file.Length > 0)
@@ -130,6 +134,7 @@ namespace GPGDesign.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("all")]
         public IActionResult All()
         {
             base.InitMainLabels();
@@ -160,6 +165,7 @@ namespace GPGDesign.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("delete")]
         public IActionResult Delete(int id)
         {
             var category = categoryRepository.All()
@@ -179,6 +185,7 @@ namespace GPGDesign.Controllers
         }
 
         [HttpGet]
+        [Route("get")]
         public IActionResult GetById(int id)
         {
             base.InitMainLabels();
@@ -219,6 +226,7 @@ namespace GPGDesign.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route("UploadImages")]
         public IActionResult UploadImages(CategoryViewModel model, List<IFormFile> files)
         {
             if (files.Count == 0)
@@ -258,6 +266,7 @@ namespace GPGDesign.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route("DeleteImages")]
         public IActionResult DeleteImages(IEnumerable<ImageViewModel> images, int id)
         {
             var imagesForDelete = galleryImageRepository

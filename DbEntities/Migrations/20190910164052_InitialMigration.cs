@@ -55,7 +55,13 @@ namespace DbEntities.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false)
+                    BgDescription = table.Column<string>(nullable: true),
+                    BgName = table.Column<string>(nullable: false),
+                    DeDescription = table.Column<string>(nullable: true),
+                    DeName = table.Column<string>(nullable: false),
+                    EnDescription = table.Column<string>(nullable: true),
+                    EnName = table.Column<string>(nullable: false),
+                    Thumbnail = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -174,9 +180,13 @@ namespace DbEntities.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BgDescription = table.Column<string>(nullable: true),
+                    CategoryDescription = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Image = table.Column<byte[]>(nullable: true)
+                    DeDescription = table.Column<string>(nullable: true),
+                    EnDescription = table.Column<string>(nullable: true),
+                    Image = table.Column<byte[]>(nullable: true),
+                    ShowOnMainPage = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -238,6 +248,14 @@ namespace DbEntities.Migrations
                                    VALUES ('9e01f90a-0260-462d-8799-8ef8a5dfaa51', 0, '3afd26a5-34f4-4a56-a3d2-1078256077b5', 'officegpgdesign@gmail.com', 1, 1, 'OFFICEGPGDESIGN@GMAIL.COM', 'OFFICEGPGDESIGN@GMAIL.COM', 'AQAAAAEAACcQAAAAECevhfdlHa9rwSfUpPOyAc866t6gpPhKBrX++H4VTm1blKv5PTZrSNJwcvNWIlbjIw==', NULL, 0, '636fb1e3-f620-40f0-a5f1-bdc1b0f56baf', 0, 'officegpgdesign@gmail.com')";
 
             migrationBuilder.Sql(userCommand);
+
+            // Seed categories
+            string categoriesCommand = File.ReadAllText("..\\DbEntities\\Seed\\CategoriesSeed.sql");
+            migrationBuilder.Sql(categoriesCommand);
+
+            // Seed images
+            string galleryImageCommand = File.ReadAllText("..\\DbEntities\\Seed\\GalleryImageSeed.sql");
+            migrationBuilder.Sql(galleryImageCommand);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

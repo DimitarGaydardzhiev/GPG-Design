@@ -25,20 +25,17 @@ namespace DbEntities.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("BgDescription")
-                        .IsRequired();
+                    b.Property<string>("BgDescription");
 
                     b.Property<string>("BgName")
                         .IsRequired();
 
-                    b.Property<string>("DeDescription")
-                        .IsRequired();
+                    b.Property<string>("DeDescription");
 
                     b.Property<string>("DeName")
                         .IsRequired();
 
-                    b.Property<string>("EnDescription")
-                        .IsRequired();
+                    b.Property<string>("EnDescription");
 
                     b.Property<string>("EnName")
                         .IsRequired();
