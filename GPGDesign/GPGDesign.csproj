@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-GPGDesign-302BF3C9-3431-4AE6-8FED-5C2B71521FDD</UserSecretsId>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
     <ApplicationIcon />
     <Win32Resource />
   </PropertyGroup>
