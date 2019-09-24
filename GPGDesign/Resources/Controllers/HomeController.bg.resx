@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutUsEquipment" xml:space="preserve">
+    <value>Фирмата разполага с широкоформатни CNC фреза и лазер. Оборудвана база за изработка и сглобяване на детайли от PVC ,плексиглас и еталбонд. Изработка на стоманени и алуминиеви конструкции и детайли. Разполагаме с висококачествени печатни машини ,плотери и ламинатори.</value>
+  </data>
   <data name="AboutUsIntro" xml:space="preserve">
     <value>Фирмата е създадена през 1993г. с предмет на дейност рекламни услуги. Първоначалната ориентация е изработка на произведения на изкуството и външна реклама.</value>
   </data>
@@ -148,16 +151,16 @@
     <value>Планиране</value>
   </data>
   <data name="GalleryNavLabel" xml:space="preserve">
-    <value>Галерия</value>
+    <value>Портфолио</value>
   </data>
   <data name="HomeMainLbl" xml:space="preserve">
-    <value>Ние сме просто креативни хора</value>
+    <value>За нас няма невъзможни неща</value>
   </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Начало</value>
   </data>
   <data name="HomeWeOffer" xml:space="preserve">
-    <value>Ние предлагаме</value>
+    <value>Реализирани проекти</value>
   </data>
   <data name="Make" xml:space="preserve">
     <value>Изработка</value>

@@ -35,6 +35,7 @@ namespace GPGDesign.Controllers
             ViewData["HomeMainLbl"] = _localizer["HomeMainLbl"];
             ViewData["HomeWeOffer"] = _localizer["HomeWeOffer"];
             ViewData["AboutUsIntro"] = _localizer["AboutUsIntro"];
+            ViewData["AboutUsEquipment"] = _localizer["AboutUsEquipment"];
             ViewData["AboutUsNext"] = _localizer["AboutUsNext"];
             ViewData["AboutUsLabel"] = _localizer["AboutUsLabel"];
             ViewData["Philosophy"] = _localizer["Philosophy"];
