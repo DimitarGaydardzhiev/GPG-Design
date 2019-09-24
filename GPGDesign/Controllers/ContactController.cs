@@ -35,9 +35,9 @@ namespace GPGDesign.Controllers
             base.InitMainLabels();
             if (ModelState.IsValid)
             {
-                const string fromPassword = "Gpg2018!";
-                var fromAddress = new MailAddress("officegpgdesign@gmail.com", "From Name");
-                var toAddress = new MailAddress("teofil.y@gmail.com", "To Name");
+                const string fromPassword = "Stefan2019!";
+                var fromAddress = new MailAddress("officegpgdesign@gmail.com", "Запитване");
+                var toAddress = new MailAddress("sorento_ssp@abv.bg", "До Стефан");
                 var credential = new NetworkCredential
                 {
                     UserName = "officegpgdesign@gmail.com",
@@ -53,7 +53,7 @@ namespace GPGDesign.Controllers
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Credentials = credential,
-                    Timeout = 20000
+                    Timeout = 20000                    
                 };
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
