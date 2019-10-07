@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutUsEquipment" xml:space="preserve">
+    <value>The company has a large-format CNC cutter and laser. Equipped base for production and assembly of PVC, plexiglass and etalbond parts. We also offer production of steel and aluminum structures and parts. We have high quality printing machines, plotters and laminators.</value>
+  </data>
   <data name="AboutUsIntro" xml:space="preserve">
     <value>The company was established in 1993, performing advertising services. The original orientation was the production of artwork and outdoor advertising.</value>
   </data>
@@ -148,16 +151,16 @@
     <value>Discuss</value>
   </data>
   <data name="GalleryNavLabel" xml:space="preserve">
-    <value>Gallery</value>
+    <value>Portfolio</value>
   </data>
   <data name="HomeMainLbl" xml:space="preserve">
-    <value>We Are just crative people</value>
+    <value>There are no impossible things for us</value>
   </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="HomeWeOffer" xml:space="preserve">
-    <value>We offer you</value>
+    <value>Completed projects</value>
   </data>
   <data name="Make" xml:space="preserve">
     <value>Make</value>
