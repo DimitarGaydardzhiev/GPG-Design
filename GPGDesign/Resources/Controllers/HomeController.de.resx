@@ -148,6 +148,9 @@ Uns stehen moderne Druckmaschinen, Plotter und Laminiergeräte zur Verfügung.</
   <data name="CookieLearnMore" xml:space="preserve">
     <value>Erfahren Sie mehr</value>
   </data>
+  <data name="CookieMessage" xml:space="preserve">
+    <value>Diese Webseite verwendet Cookies, um Ihnen den bestmöglichen Service zu gewährleisten.</value>
+  </data>
   <data name="Discuss" xml:space="preserve">
     <value>Planung</value>
   </data>

@@ -2068,7 +2068,7 @@ a.logo:hover {
  */
 
 .main-nav.dark {
-    background-color: rgba(10,10,10, .95);
+    background-color: black;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -7245,4 +7245,8 @@ section:hover .small-item-carousel .owl-next {
 .main-heading {
     font-family: "Comic Sans MS", cursive, sans-serif;
     font-size: 30px;
+}
+
+.appear-animate {
+    margin-top: 75px;
 }
