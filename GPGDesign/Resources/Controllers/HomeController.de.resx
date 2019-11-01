@@ -117,23 +117,66 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutUsEquipment" xml:space="preserve">
+    <value>Das Unternehmen verfügt über CNC gesteuerte Anlagen im Großformat. Unsere Produktionstechnik ist für Anfertigung und Zusammenbau von Teilen aus PVC, PLEXIGLAS®, Aluminium und ETALBOND® (Sandwichkonstruktionen) geeignet.  Wir fertigen Stahl- und Aluminiumkonstruktionen und Teile an.
+Uns stehen moderne Druckmaschinen, Plotter und Laminiergeräte zur Verfügung.</value>
+  </data>
+  <data name="AboutUsIntro" xml:space="preserve">
+    <value>Das Unternehmen wurde 1993 gegründet und da stand die Werbung im Mittelpunkt. Die anfängliche Idee war Anfertigung von Kunstwerken und Außenwerbung.</value>
+  </data>
+  <data name="AboutUsLabel" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="AboutUsNext" xml:space="preserve">
+    <value>Im Laufe der Zeit wurde die Unternehmenstätigkeit um weitere Sparten erweitert: Druck, Transportleistungen, Medien, Webdesign sowie Werbekonzepte und Marketingstrategien.</value>
+  </data>
+  <data name="BackLabel" xml:space="preserve">
+    <value>Nach hause</value>
+  </data>
   <data name="CarouselLabel" xml:space="preserve">
     <value>Wir sind einfach kreative Menschen</value>
   </data>
   <data name="ContactUsNavLabel" xml:space="preserve">
     <value>Kontakt</value>
   </data>
+  <data name="CookieAccept" xml:space="preserve">
+    <value>Verstanden</value>
+  </data>
+  <data name="CookieDecline" xml:space="preserve">
+    <value>Ablehnen</value>
+  </data>
+  <data name="CookieLearnMore" xml:space="preserve">
+    <value>Erfahren Sie mehr</value>
+  </data>
+  <data name="CookieMessage" xml:space="preserve">
+    <value>Diese Webseite verwendet Cookies, um Ihnen den bestmöglichen Service zu gewährleisten.</value>
+  </data>
+  <data name="Discuss" xml:space="preserve">
+    <value>Planung</value>
+  </data>
   <data name="GalleryNavLabel" xml:space="preserve">
     <value>Galerie</value>
   </data>
   <data name="HomeMainLbl" xml:space="preserve">
-    <value>Wir sind einfach kreative Menschen</value>
+    <value>Wir machen auch das unmögliche möglich</value>
   </data>
   <data name="HomeNavLabel" xml:space="preserve">
     <value>Nach hause</value>
   </data>
   <data name="HomeWeOffer" xml:space="preserve">
     <value>Wir bieten dir</value>
+  </data>
+  <data name="Make" xml:space="preserve">
+    <value>Kunstfertigkeit</value>
+  </data>
+  <data name="Philosophy" xml:space="preserve">
+    <value>Die Geschäftsführung von GPG Design und alle Mitarbeiter haften für die Qualität der Produkte und der Montage in Übereinstimmung mit den Kundenwünschen. Unser oberstes Prinzip heißt: Top-Qualität und Kundenzufriedenheit.</value>
+  </data>
+  <data name="PhilosophyLabel" xml:space="preserve">
+    <value>Unsere unternehmensphilosophie</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Ergebnis</value>
   </data>
   <data name="SeeMoreLabel" xml:space="preserve">
     <value>Mehr sehen</value>
