@@ -515,7 +515,8 @@ function initPageSliders(){
             autoHeight: true,
             navigation: true,
             pagination: true,
-            navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"]
+            navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            afterAction: afterAction
         });
         
         // Fullwidth slider
@@ -655,7 +656,7 @@ function initPageSliders(){
             navigation: true,
             navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
             afterAction : syncPosition,
-            responsiveRefreshRate : 200
+            responsiveRefreshRate: 200
         });
         $(".fullwidth-slideshow-pager").owlCarousel({
             autoPlay: 5000,
@@ -680,6 +681,10 @@ function initPageSliders(){
             if ($(".fullwidth-slideshow-pager").data("owlCarousel") !== undefined) {
                 center(current)
             }
+        }
+
+        function afterAction() {
+            $('.repeat').click()
         }
         
         $(".fullwidth-slideshow-pager").on("click", ".owl-item", function(e){

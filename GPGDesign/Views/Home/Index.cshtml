@@ -35,18 +35,33 @@
                 <div class="js-height-full container">
                     <div class="home-content">
                         <div class="home-text">
-                            <h4 class="font-alt mb-50 mb-xs-30">
+                            <h4 class="font-alt mb-50 mb-xs-30 animate one">
                                 @if (culture == "en")
                                 {
-                                    @image.EnDescription
+                                    for (int i = 0; i < image.EnDescription?.Length; i++)
+                                    {
+                                        <span>@image.EnDescription[i]</span>
+                                    }
+
+                                    <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
                                 }
                                 else if (culture == "de")
                                 {
-                                    @image.DeDescription
+                                    for (int i = 0; i < image.DeDescription?.Length; i++)
+                                    {
+                                        <span>@image.DeDescription[i]</span>
+                                    }
+
+                                    <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
                                 }
                                 else
                                 {
-                                    @image.BgDescription
+                                    for (int i = 0; i < image.BgDescription?.Length; i++)
+                                    {
+                                        <span>@image.BgDescription[i]</span>
+                                    }
+
+                                    <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
                                 }
                             </h4>
                             <div class="local-scroll">
@@ -59,7 +74,6 @@
         }
     </div>
     <!-- End Fullwidth Slider -->
-
     <!-- About Section -->
     <section class="page-section" id="about">
         <div class="container relative">
@@ -199,9 +213,77 @@
     </section>
 </div>
 
+@*animations*@
+@*<div class="container">
+        <!--<div class="take-input">
+           <input type="text" placeholder="Write any text" />
+          <a href="javascript:void(0);">Enter Text</a>
+        </div>-->
+        <div class="animate seven">
+            <span>c</span><span>s</span><span>s</span><span>3</span> &nbsp;
+            <span>a</span><span>n</span><span>i</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
+
+            <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
+        </div>
+
+        <div class="animate one">
+            <span>c</span><span>s</span><span>s</span><span>3</span> &nbsp;
+            <span>a</span><span>n</span><span>i</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
+
+            <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
+        </div>
+
+        <div class="animate two">
+            <span>c</span><span>s</span><span>s</span><span>3</span> &nbsp;
+            <span>a</span><span>n</span><span>i</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
+
+            <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
+        </div>
+
+        <div class="animate three">
+            <span>c</span><span>s</span><span>s</span><span>3</span> &nbsp;
+            <span>a</span><span>n</span><span>i</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
+
+            <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
+        </div>
+
+        <div class="animate four">
+            <span>c</span><span>s</span><span>s</span><span>3</span> &nbsp;
+            <span>a</span><span>n</span><span>i</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
+
+            <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
+        </div>
+
+        <div class="animate five">
+            <span>c</span><span>s</span><span>s</span><span>3</span> &nbsp;
+            <span>a</span><span>n</span><span>i</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
+
+            <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
+        </div>
+
+        <div class="animate six">
+            <span>c</span><span>s</span><span>s</span><span>3</span> &nbsp;
+            <span>a</span><span>n</span><span>i</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
+
+            <a class="repeat" href="javascript:void(0);">Repeat Animation</a>
+        </div>
+    </div>*@
+
 <script type="text/javascript" src="~/js/jquery-1.11.2.min.js"></script>
 <script>
     if ($(".main-nav").hasClass("transparent")) {
         $(".main-nav").removeClass("transparent");
     }
+
+    // trigger animation
+    $(window).on('load', function () {
+        $('.repeat').click(function () {
+            var classes = $(this).parent().attr('class');
+            $(this).parent().attr('class', 'animate');
+            var indicator = $(this);
+            setTimeout(function () {
+                $(indicator).parent().addClass(classes);
+            }, 20);
+        });
+    });
 </script>
