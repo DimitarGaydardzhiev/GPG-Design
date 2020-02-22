@@ -1,10 +1,13 @@
 ﻿using DataLayer;
+using GPGDesign.Components;
 using GPGDesign.Data;
 using GPGDesign.Models;
 using GPGDesign.Services;
+using GPGDesign.Utils.GoogleAnalitycs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -75,6 +78,12 @@ namespace GPGDesign
             });
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+
+            // Register the Google Analytics configuration
+            services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
+
+            // Register the TagHelperComponent
+            services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

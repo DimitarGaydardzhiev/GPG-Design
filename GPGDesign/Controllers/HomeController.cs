@@ -71,6 +71,11 @@ namespace GPGDesign.Controllers
             return View();
         }
 
+        public IActionResult UpdateData()
+        {
+            return Ok();
+        }
+
         private IEnumerable<ImageViewModel> GetMainPageImages()
         {
             var result = _galleryImageRepository.All()

@@ -285,5 +285,14 @@
                 $(indicator).parent().addClass(classes);
             }, 20);
         });
+
+
+        var interval = 10800000;
+        setInterval(function () { Update() }, interval);
+
+        function Update() {
+            $.get("/Home/UpdateData", function () {
+            });
+        } 
     });
 </script>
