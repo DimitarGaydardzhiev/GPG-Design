@@ -244,8 +244,11 @@ namespace DbEntities.Migrations
                 column: "CategoryId");
 
             // Seed admin user
+            //string userCommand = @"INSERT INTO AspNetUsers(Id, AccessFailedCount, ConcurrencyStamp, Email, EmailConfirmed, LockoutEnabled, NormalizedEmail, NormalizedUserName, PasswordHash, PhoneNumber, PhoneNumberConfirmed, SecurityStamp, TwoFactorEnabled, UserName)
+            //                       VALUES ('9e01f90a-0260-462d-8799-8ef8a5dfaa51', 0, '3afd26a5-34f4-4a56-a3d2-1078256077b5', 'officegpgdesign@gmail.com', 1, 1, 'OFFICEGPGDESIGN@GMAIL.COM', 'OFFICEGPGDESIGN@GMAIL.COM', 'AQAAAAEAACcQAAAAECevhfdlHa9rwSfUpPOyAc866t6gpPhKBrX++H4VTm1blKv5PTZrSNJwcvNWIlbjIw==', NULL, 0, '636fb1e3-f620-40f0-a5f1-bdc1b0f56baf', 0, 'officegpgdesign@gmail.com')";
+
             string userCommand = @"INSERT INTO AspNetUsers(Id, AccessFailedCount, ConcurrencyStamp, Email, EmailConfirmed, LockoutEnabled, NormalizedEmail, NormalizedUserName, PasswordHash, PhoneNumber, PhoneNumberConfirmed, SecurityStamp, TwoFactorEnabled, UserName)
-                                   VALUES ('9e01f90a-0260-462d-8799-8ef8a5dfaa51', 0, '3afd26a5-34f4-4a56-a3d2-1078256077b5', 'officegpgdesign@gmail.com', 1, 1, 'OFFICEGPGDESIGN@GMAIL.COM', 'OFFICEGPGDESIGN@GMAIL.COM', 'AQAAAAEAACcQAAAAECevhfdlHa9rwSfUpPOyAc866t6gpPhKBrX++H4VTm1blKv5PTZrSNJwcvNWIlbjIw==', NULL, 0, '636fb1e3-f620-40f0-a5f1-bdc1b0f56baf', 0, 'officegpgdesign@gmail.com')";
+                                   VALUES ('218560c4-67f7-403c-af89-07892d051a31', 0, '409079a8-eeb8-47e3-84cd-e267fc78d9a4', 'info@bulgarbuild.bg', 1, 1, 'INFO@BULGARBUILD.BG', 'INFO@BULGARBUILD.BG', 'AQAAAAEAACcQAAAAENEY5bpE+hvhJ8zPngucifpY5Z5oOQ48y5BGnaH/hzw4gTNNTDx9/r95ek1W01og6Q==', NULL, 0, '4e5332d7-17d6-44fb-bd2c-00362be8aed5', 0, 'info@bulgarbuild.bg')";
 
             migrationBuilder.Sql(userCommand);
 

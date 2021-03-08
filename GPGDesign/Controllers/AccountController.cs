@@ -211,37 +211,38 @@ namespace GPGDesign.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public IActionResult Register(string returnUrl = null)
-        //{
-        //    ViewData["ReturnUrl"] = returnUrl;
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult Register(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            base.InitMainLabels();
+            return View();
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
-        //{
-        //    ViewData["ReturnUrl"] = returnUrl;
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, EmailConfirmed = true };
-        //        var result = await _userManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            _logger.LogInformation("User created a new account with password.");
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, EmailConfirmed = true };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User created a new account with password.");
 
-        //            await _signInManager.SignInAsync(user, isPersistent: false);
-        //            _logger.LogInformation("User created a new account with password.");
-        //            return RedirectToLocal("/");
-        //        }
-        //        AddErrors(result);
-        //    }
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation("User created a new account with password.");
+                    return RedirectToLocal("/");
+                }
+                AddErrors(result);
+            }
 
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
-        
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
