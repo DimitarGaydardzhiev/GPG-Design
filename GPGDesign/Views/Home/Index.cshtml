@@ -83,17 +83,24 @@
             <div class="section-text">
                 <div class="row">
                     <div class="col-md-2">
-                        <img src="~/images/logo-gpg.jpg" alt="logo" />
                     </div>
-                    <div class="col-md-3 col-sm-6 mb-sm-50 mb-xs-30">
-                        @ViewData["AboutUsIntro"]
+                    <div class="col-md-2 home-logo">
+                        <img src="~/images/bulgarbuild_logo_black.jpg" alt="logo" />
                     </div>
-                    <div class="col-md-3 col-sm-6 mb-sm-50 mb-xs-30">
-                        @ViewData["AboutUsNext"]
+                    <div class="col-md-8 col-sm-6 mb-sm-50 mb-xs-30 p-4">
+                        <ul>
+                            @foreach (var item in @ViewData["AboutUsIntro"].ToString().Split("-", StringSplitOptions.RemoveEmptyEntries))
+                            {
+                                <li>@item</li>
+                            }
+                        </ul>
                     </div>
-                    <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                        @ViewData["AboutUsEquipment"]
-                    </div>
+                    @*<div class="col-md-3 col-sm-6 mb-sm-50 mb-xs-30">
+                            @ViewData["AboutUsNext"]
+                        </div>
+                        <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
+                            @ViewData["AboutUsEquipment"]
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -293,6 +300,6 @@
         function Update() {
             $.get("/Home/UpdateData", function () {
             });
-        } 
+        }
     });
 </script>

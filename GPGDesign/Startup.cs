@@ -69,7 +69,7 @@ namespace GPGDesign
                 {
                     new CultureInfo("bg"),
                     new CultureInfo("en"),
-                    new CultureInfo("de")
+                    // new CultureInfo("de")
                 };
 
                 opts.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en");
@@ -100,6 +100,7 @@ namespace GPGDesign
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseFileServer();
             app.UseStaticFiles();
 
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();

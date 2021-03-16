@@ -7551,6 +7551,17 @@ section:hover .small-item-carousel .owl-next {
     display: none;
 }
 
+.home-logo {
+    margin-top: 4%;
+}
+
+.p-4 {
+    padding: 1%;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
 /*animations end*/
 
 

@@ -121,7 +121,14 @@
     <value>The company has a large-format CNC cutter and laser. Equipped base for production and assembly of PVC, plexiglass and etalbond parts. We also offer production of steel and aluminum structures and parts. We have high quality printing machines, plotters and laminators.</value>
   </data>
   <data name="AboutUsIntro" xml:space="preserve">
-    <value>The company was established in 1993, performing advertising services. The original orientation was the production of artwork and outdoor advertising.</value>
+    <value>- Design
+- Fabrication and installation of metal and wooden structures
+- Installation of thermal panels, etalbond and metal sheets
+- Reinforcement of reinforced concrete structures
+- Reconstruction of metal and reinforced concrete structures
+- Construction of prefabricated and monolithic buildings
+- Finishing works and repairs
+- Construction and installation of outdoor advertising equipment</value>
   </data>
   <data name="AboutUsLabel" xml:space="preserve">
     <value>About Us</value>
@@ -166,7 +173,7 @@
     <value>Make</value>
   </data>
   <data name="Philosophy" xml:space="preserve">
-    <value>The management of GPG Design, together with all its employees, ensures the quality of its products and complete assemblies in accordance with all requirements. The pursuit of ever higher quality products is our primary goal.</value>
+    <value>Bulgarbuild Ltd., along with its employees, guarantees work quality in accordance with the requirements of the client and the regulations of BCC (Chamber of Builders in Bulgaria).</value>
   </data>
   <data name="PhilosophyLabel" xml:space="preserve">
     <value>Philosophy</value>
