@@ -519,7 +519,7 @@ hr {
 .font-alt {
     font-family: Dosis, arial, sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
 }
 
 .serif {
@@ -1674,14 +1674,14 @@ a.logo:hover {
 }
 
 
-.small-height {
+/*.small-height {
     height: 55px !important;
 }
 
     .small-height .inner-nav ul li a {
         height: 55px !important;
         line-height: 55px !important;
-    }
+    }*/
 
 .inner-nav {
     display: inline-block;
@@ -7267,7 +7267,7 @@ section:hover .small-item-carousel .owl-next {
 /*animations start*/
 
 .animate {
-    font-size: 350%;
+    font-size: 4vw;
     font-family: 'Nanum Gothic', sans-serif;
     color: white;
     font-weight: bold;
@@ -7563,5 +7563,12 @@ section:hover .small-item-carousel .owl-next {
     list-style-type: none;
 }
 /*animations end*/
+
+.logo {
+    margin: 20px !important;
+    display: flex !important;
+    max-width: 355px !important;
+    height: 35px !important;
+}
 
 
