@@ -19,7 +19,8 @@ namespace GPGDesign.Controllers
             _localizer = localizer;
             _homeLocalizer = homeLocalizer;
         }
-        
+
+        [HttpGet("contacts")]
         public ActionResult Contact()
         {
             base.InitMainLabels();

@@ -55,10 +55,10 @@
                         </li>
                     }
                     <li>
-                        @Html.ActionLink(@ViewData["HomeNavLabel"].ToString(), "Index", "Home", new { @class = "mn-has-sub active" })
+                        @Html.ActionLink(@ViewData["HomeNavLabel"].ToString(), "Index", "Home")
                     </li>
                     <li>
-                        @Html.ActionLink(@ViewData["ContactUsNavLabel"].ToString(), "Contact", "Contact", new { @class = "mn-has-sub" })
+                        @Html.ActionLink(@ViewData["ContactUsNavLabel"].ToString(), "Contact", "Contact")
                     </li>
                     <li>
                         @await Component.InvokeAsync("CategoryList")
@@ -69,7 +69,7 @@
                                 <a class="mn-has-sub"><i class="fa"></i>@Html.ActionLink("Registration", "Register", "Account")</a>
                             </li>*@
                         <li>
-                            @Html.ActionLink("Logout", "Logout", new { controller = "Account" }, new { @class = "mn-has-sub" })
+                            @Html.ActionLink("Logout", "Logout", new { controller = "Account" })
                         </li>
                     }
                     <li>

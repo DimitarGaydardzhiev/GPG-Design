@@ -27,8 +27,8 @@ namespace GPGDesign.Controllers
             this.imageRepository = categoryRepository;
             _localizer = homeLocalizer;
         }
-
-        [HttpGet]
+        
+        [HttpGet("images/settings")]
         [Authorize]
         public IActionResult MainPageImages()
         {

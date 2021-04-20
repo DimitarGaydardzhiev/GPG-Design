@@ -129,7 +129,7 @@ namespace GPGDesign.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpGet("categories/settings/all")]
         [Authorize]
         public IActionResult All()
         {
@@ -179,8 +179,7 @@ namespace GPGDesign.Controllers
             return RedirectToAction("All");
         }
 
-        [HttpGet]
-        [Route("get-category/{id}")]
+        [HttpGet("category/select/{id}")]
         public IActionResult GetById(int id)
         {
             base.InitMainLabels();
