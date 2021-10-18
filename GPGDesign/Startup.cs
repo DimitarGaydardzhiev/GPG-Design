@@ -7,6 +7,7 @@ using GPGDesign.Utils.GoogleAnalitycs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -49,7 +50,7 @@ namespace GPGDesign
             .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();            
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
@@ -61,20 +62,25 @@ namespace GPGDesign
                 {
                     ProgressBar = false,
                     PositionClass = ToastPositions.BottomRight
-                });;
+                }); ;
 
-            services.Configure<RequestLocalizationOptions>(opts =>
-            {
-                var supportedCultures = new List<CultureInfo>
+            var supportedCultures = new List<CultureInfo>
                 {
                     new CultureInfo("bg"),
                     new CultureInfo("en"),
                     // new CultureInfo("de")
                 };
 
-                opts.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en");
-                opts.SupportedCultures = supportedCultures;
-                opts.SupportedUICultures = supportedCultures;
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("bg");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+                options.RequestCultureProviders = new List<IRequestCultureProvider>
+                    {
+                        new QueryStringRequestCultureProvider(),
+                        new CookieRequestCultureProvider()
+                    };
             });
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));

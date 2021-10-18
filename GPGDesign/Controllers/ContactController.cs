@@ -38,7 +38,7 @@ namespace GPGDesign.Controllers
             {
                 const string fromPassword = "Stefan2019!";
                 var fromAddress = new MailAddress("officegpgdesign@gmail.com", "Запитване");
-                var toAddress = new MailAddress("office@werbungart.com", "До Стефан");
+                var toAddress = new MailAddress("bulgarbuild@abv.bg", "До Стефан");
                 var credential = new NetworkCredential
                 {
                     UserName = "officegpgdesign@gmail.com",
